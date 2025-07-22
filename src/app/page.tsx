@@ -2,7 +2,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import { ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
+import { ChevronLeft, ChevronRight, Play, Pause, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -50,30 +50,35 @@ export default function SlidesPage() {
     }
   };
 
+  const handleEmailCTA = () => {
+    window.location.href =
+      "mailto:tom.welsh@theaiaa.com?subject=Slide Deck - AI-Driven Development Showcase";
+  };
+
   const slides: Slide[] = [
     {
       id: 1,
       title: "Building an Asset Management System",
       subtitle: "An AI-Driven Development Journey with Cursor IDE",
       content: (
-        <div className="space-y-6">
-          <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-6 rounded-lg text-center">
-            <h3 className="text-xl font-semibold mb-2">
+        <div className="space-y-4 h-full overflow-y-auto">
+          <div className="bg-gradient-to-r from-blue-600 to-orange-500 text-white p-4 rounded-lg text-center">
+            <h3 className="text-lg font-semibold mb-2">
               The Vision: 100% AI-Driven Development
             </h3>
-            <p>
+            <p className="text-sm">
               Exploring how generative AI can transform complex software
               projects
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-2 gap-3">
             <Card>
-              <CardContent className="p-4">
-                <h4 className="font-semibold text-lg mb-3 text-blue-600">
+              <CardContent className="p-3">
+                <h4 className="font-semibold text-base mb-2 text-blue-600">
                   The Challenge
                 </h4>
-                <ul className="space-y-2 text-sm">
+                <ul className="space-y-1 text-xs">
                   <li>• Comprehensive asset lifecycle tracking</li>
                   <li>• Multi-device support (phones, laptops, monitors)</li>
                   <li>• Real-time dashboard & reporting</li>
@@ -84,11 +89,11 @@ export default function SlidesPage() {
             </Card>
 
             <Card>
-              <CardContent className="p-4">
-                <h4 className="font-semibold text-lg mb-3 text-green-600">
+              <CardContent className="p-3">
+                <h4 className="font-semibold text-base mb-2 text-orange-500">
                   The Approach
                 </h4>
-                <ul className="space-y-2 text-sm">
+                <ul className="space-y-1 text-xs">
                   <li>
                     • <strong>100% AI-Driven Development</strong>
                   </li>
@@ -99,6 +104,16 @@ export default function SlidesPage() {
               </CardContent>
             </Card>
           </div>
+
+          <div className="text-center pt-4">
+            <Button
+              onClick={handleEmailCTA}
+              className="bg-orange-500 hover:bg-orange-600 text-white"
+            >
+              <Mail className="h-4 w-4 mr-2" />
+              Learn More About AI Development
+            </Button>
+          </div>
         </div>
       ),
     },
@@ -106,19 +121,19 @@ export default function SlidesPage() {
       id: 2,
       title: "Asset Management System Overview",
       content: (
-        <div className="space-y-6">
-          <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-6 rounded-lg text-center">
-            <h3 className="text-xl font-semibold mb-2">Core Purpose</h3>
-            <p>
+        <div className="space-y-4 h-full overflow-y-auto">
+          <div className="bg-gradient-to-r from-blue-600 to-orange-500 text-white p-4 rounded-lg text-center">
+            <h3 className="text-lg font-semibold mb-2">Core Purpose</h3>
+            <p className="text-sm">
               Streamline IT asset tracking, management, and lifecycle control
               within organizations
             </p>
           </div>
 
-          <h3 className="text-xl font-semibold text-gray-800">
+          <h3 className="text-lg font-semibold text-gray-800">
             Key Modules Built with AI
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             {[
               {
                 title: "Asset Management",
@@ -146,14 +161,24 @@ export default function SlidesPage() {
               },
             ].map((module, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow">
-                <CardContent className="p-4 text-center">
-                  <div className="font-semibold text-blue-600 mb-2">
+                <CardContent className="p-3 text-center">
+                  <div className="font-semibold text-blue-600 mb-1 text-sm">
                     {module.title}
                   </div>
-                  <div className="text-sm text-gray-600">{module.desc}</div>
+                  <div className="text-xs text-gray-600">{module.desc}</div>
                 </CardContent>
               </Card>
             ))}
+          </div>
+
+          <div className="text-center pt-4">
+            <Button
+              onClick={handleEmailCTA}
+              className="bg-orange-500 hover:bg-orange-600 text-white"
+            >
+              <Mail className="h-4 w-4 mr-2" />
+              Discuss Your Asset Management Needs
+            </Button>
           </div>
         </div>
       ),
@@ -162,15 +187,15 @@ export default function SlidesPage() {
       id: 3,
       title: "Key Features: AI's Implementation Impact",
       content: (
-        <div className="space-y-6">
-          <div className="space-y-4">
+        <div className="space-y-4 h-full overflow-y-auto">
+          <div className="space-y-3">
             <div>
-              <h3 className="text-lg font-semibold text-blue-600 mb-3">
+              <h3 className="text-base font-semibold text-blue-600 mb-2">
                 1. Comprehensive Asset Lifecycle Management
               </h3>
               <Card>
-                <CardContent className="p-4">
-                  <ul className="space-y-2 text-sm">
+                <CardContent className="p-3">
+                  <ul className="space-y-1 text-xs">
                     <li>
                       • <strong>AI-Generated State Transitions:</strong> Complex
                       flows (AVAILABLE → SIGNED_OUT → BUILT → ISSUED)
@@ -189,12 +214,12 @@ export default function SlidesPage() {
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold text-blue-600 mb-3">
+              <h3 className="text-base font-semibold text-blue-600 mb-2">
                 2. Robust User Authentication
               </h3>
               <Card>
-                <CardContent className="p-4">
-                  <ul className="space-y-2 text-sm">
+                <CardContent className="p-3">
+                  <ul className="space-y-1 text-xs">
                     <li>
                       • <strong>Supabase Integration:</strong> AI-guided setup
                       of auth, environment variables, API keys
@@ -209,12 +234,12 @@ export default function SlidesPage() {
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold text-blue-600 mb-3">
+              <h3 className="text-base font-semibold text-blue-600 mb-2">
                 3. Flexible Barcode Scanning
               </h3>
               <Card>
-                <CardContent className="p-4">
-                  <ul className="space-y-2 text-sm">
+                <CardContent className="p-3">
+                  <ul className="space-y-1 text-xs">
                     <li>
                       • <strong>Dual Support:</strong> USB and camera-based
                       scanning integration
@@ -228,6 +253,16 @@ export default function SlidesPage() {
               </Card>
             </div>
           </div>
+
+          <div className="text-center pt-4">
+            <Button
+              onClick={handleEmailCTA}
+              className="bg-orange-500 hover:bg-orange-600 text-white"
+            >
+              <Mail className="h-4 w-4 mr-2" />
+              Explore AI Implementation Strategies
+            </Button>
+          </div>
         </div>
       ),
     },
@@ -235,15 +270,15 @@ export default function SlidesPage() {
       id: 4,
       title: "Key Features: AI's Implementation Impact (Continued)",
       content: (
-        <div className="space-y-6">
-          <div className="space-y-4">
+        <div className="space-y-4 h-full overflow-y-auto">
+          <div className="space-y-3">
             <div>
-              <h3 className="text-lg font-semibold text-blue-600 mb-3">
+              <h3 className="text-base font-semibold text-blue-600 mb-2">
                 4. Interactive Dashboard & Reporting
               </h3>
               <Card>
-                <CardContent className="p-4">
-                  <ul className="space-y-2 text-sm">
+                <CardContent className="p-3">
+                  <ul className="space-y-1 text-xs">
                     <li>
                       • <strong>Real-time Metrics:</strong> AI-assisted complex
                       database query aggregation
@@ -258,12 +293,12 @@ export default function SlidesPage() {
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold text-blue-600 mb-3">
+              <h3 className="text-base font-semibold text-blue-600 mb-2">
                 5. Type-Safe Database Layer
               </h3>
               <Card>
-                <CardContent className="p-4">
-                  <ul className="space-y-2 text-sm">
+                <CardContent className="p-3">
+                  <ul className="space-y-1 text-xs">
                     <li>
                       • <strong>Drizzle ORM & Neon Postgres:</strong> Complete
                       migration from raw SQL to modern ORM
@@ -282,12 +317,12 @@ export default function SlidesPage() {
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold text-blue-600 mb-3">
+              <h3 className="text-base font-semibold text-blue-600 mb-2">
                 6. Comprehensive Logging & Error Handling
               </h3>
               <Card>
-                <CardContent className="p-4">
-                  <ul className="space-y-2 text-sm">
+                <CardContent className="p-3">
+                  <ul className="space-y-1 text-xs">
                     <li>
                       • <strong>Server-Side Logging:</strong> Critical events
                       logged for Vercel compatibility
@@ -301,6 +336,16 @@ export default function SlidesPage() {
               </Card>
             </div>
           </div>
+
+          <div className="text-center pt-4">
+            <Button
+              onClick={handleEmailCTA}
+              className="bg-orange-500 hover:bg-orange-600 text-white"
+            >
+              <Mail className="h-4 w-4 mr-2" />
+              Learn About Database Architecture
+            </Button>
+          </div>
         </div>
       ),
     },
@@ -308,10 +353,10 @@ export default function SlidesPage() {
       id: 5,
       title: "Technical Architecture: Built with AI",
       content: (
-        <div className="space-y-6">
-          <div className="space-y-4">
+        <div className="space-y-4 h-full overflow-y-auto">
+          <div className="space-y-3">
             <div>
-              <h3 className="text-lg font-semibold text-blue-600 mb-3">
+              <h3 className="text-base font-semibold text-blue-600 mb-2">
                 Frontend Stack
               </h3>
               <div className="flex flex-wrap gap-2">
@@ -321,7 +366,7 @@ export default function SlidesPage() {
                   "React Hooks & Context",
                   "Lucide React Icons",
                 ].map((tech, index) => (
-                  <Badge key={index} variant="secondary" className="text-sm">
+                  <Badge key={index} variant="secondary" className="text-xs">
                     {tech}
                   </Badge>
                 ))}
@@ -329,7 +374,7 @@ export default function SlidesPage() {
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold text-blue-600 mb-3">
+              <h3 className="text-base font-semibold text-blue-600 mb-2">
                 Backend Stack
               </h3>
               <div className="flex flex-wrap gap-2">
@@ -339,7 +384,7 @@ export default function SlidesPage() {
                   "Vercel Deployment",
                   "Browserless.io PDF",
                 ].map((tech, index) => (
-                  <Badge key={index} variant="secondary" className="text-sm">
+                  <Badge key={index} variant="secondary" className="text-xs">
                     {tech}
                   </Badge>
                 ))}
@@ -347,27 +392,27 @@ export default function SlidesPage() {
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold text-blue-600 mb-3">
+              <h3 className="text-base font-semibold text-blue-600 mb-2">
                 Development Practices
               </h3>
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid md:grid-cols-2 gap-3">
                 <Card>
-                  <CardContent className="p-4">
-                    <h4 className="font-semibold text-green-600 mb-2">
+                  <CardContent className="p-3">
+                    <h4 className="font-semibold text-orange-500 mb-1 text-sm">
                       Type Safety
                     </h4>
-                    <p className="text-sm">
+                    <p className="text-xs">
                       TypeScript with AI for strict typing, error prevention,
                       and refactoring
                     </p>
                   </CardContent>
                 </Card>
                 <Card>
-                  <CardContent className="p-4">
-                    <h4 className="font-semibold text-green-600 mb-2">
+                  <CardContent className="p-3">
+                    <h4 className="font-semibold text-orange-500 mb-1 text-sm">
                       Code Quality
                     </h4>
-                    <p className="text-sm">
+                    <p className="text-xs">
                       ESLint with AI adherence to linting rules and best
                       practices
                     </p>
@@ -376,6 +421,16 @@ export default function SlidesPage() {
               </div>
             </div>
           </div>
+
+          <div className="text-center pt-4">
+            <Button
+              onClick={handleEmailCTA}
+              className="bg-orange-500 hover:bg-orange-600 text-white"
+            >
+              <Mail className="h-4 w-4 mr-2" />
+              Discuss Technical Architecture
+            </Button>
+          </div>
         </div>
       ),
     },
@@ -383,15 +438,15 @@ export default function SlidesPage() {
       id: 6,
       title: "The AI Development Journey with Cursor IDE",
       content: (
-        <div className="space-y-6">
-          <div className="space-y-4">
+        <div className="space-y-4 h-full overflow-y-auto">
+          <div className="space-y-3">
             <div>
-              <h3 className="text-lg font-semibold text-blue-600 mb-3">
+              <h3 className="text-base font-semibold text-blue-600 mb-2">
                 1. Initial Scaffolding & Setup
               </h3>
               <Card>
-                <CardContent className="p-4">
-                  <ul className="space-y-2 text-sm">
+                <CardContent className="p-3">
+                  <ul className="space-y-1 text-xs">
                     <li>
                       • <strong>Project Initialization:</strong> Next.js
                       structure, package.json, configurations
@@ -406,12 +461,12 @@ export default function SlidesPage() {
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold text-blue-600 mb-3">
+              <h3 className="text-base font-semibold text-blue-600 mb-2">
                 2. Iterative Feature Development
               </h3>
               <Card>
-                <CardContent className="p-4">
-                  <ul className="space-y-2 text-sm">
+                <CardContent className="p-3">
+                  <ul className="space-y-1 text-xs">
                     <li>
                       • <strong>Component Generation:</strong> Rapid UI
                       component creation (tables, forms, cards)
@@ -430,12 +485,12 @@ export default function SlidesPage() {
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold text-blue-600 mb-3">
+              <h3 className="text-base font-semibold text-blue-600 mb-2">
                 3. Debugging & Error Resolution
               </h3>
               <Card>
-                <CardContent className="p-4">
-                  <ul className="space-y-2 text-sm">
+                <CardContent className="p-3">
+                  <ul className="space-y-1 text-xs">
                     <li>
                       • <strong>Contextual Analysis:</strong> Real-time error
                       detection and suggestions
@@ -449,6 +504,16 @@ export default function SlidesPage() {
               </Card>
             </div>
           </div>
+
+          <div className="text-center pt-4">
+            <Button
+              onClick={handleEmailCTA}
+              className="bg-orange-500 hover:bg-orange-600 text-white"
+            >
+              <Mail className="h-4 w-4 mr-2" />
+              Learn About AI Development Process
+            </Button>
+          </div>
         </div>
       ),
     },
@@ -456,15 +521,15 @@ export default function SlidesPage() {
       id: 7,
       title: "The AI Development Journey (Continued)",
       content: (
-        <div className="space-y-6">
-          <div className="space-y-4">
+        <div className="space-y-4 h-full overflow-y-auto">
+          <div className="space-y-3">
             <div>
-              <h3 className="text-lg font-semibold text-blue-600 mb-3">
+              <h3 className="text-base font-semibold text-blue-600 mb-2">
                 4. Refactoring & Code Quality
               </h3>
               <Card>
-                <CardContent className="p-4">
-                  <ul className="space-y-2 text-sm">
+                <CardContent className="p-3">
+                  <ul className="space-y-1 text-xs">
                     <li>
                       • <strong>Type Enforcement:</strong> Strict typing and
                       robust type guards across codebase
@@ -483,12 +548,12 @@ export default function SlidesPage() {
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold text-blue-600 mb-3">
+              <h3 className="text-base font-semibold text-blue-600 mb-2">
                 5. Learning & Adaptation
               </h3>
               <Card>
-                <CardContent className="p-4">
-                  <ul className="space-y-2 text-sm">
+                <CardContent className="p-3">
+                  <ul className="space-y-1 text-xs">
                     <li>
                       • <strong>New Technologies:</strong> AI as pair programmer
                       for Drizzle ORM, Supabase, QuaggaJS
@@ -507,11 +572,21 @@ export default function SlidesPage() {
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-green-500 to-blue-600 text-white p-6 rounded-lg text-center">
-            <p className="font-semibold">
+          <div className="bg-gradient-to-r from-blue-600 to-orange-500 text-white p-4 rounded-lg text-center">
+            <p className="font-semibold text-sm">
               Key Insight: AI acted as an intelligent assistant, enabling rapid
               learning and implementation of complex integrations
             </p>
+          </div>
+
+          <div className="text-center pt-4">
+            <Button
+              onClick={handleEmailCTA}
+              className="bg-orange-500 hover:bg-orange-600 text-white"
+            >
+              <Mail className="h-4 w-4 mr-2" />
+              Explore AI Learning Strategies
+            </Button>
           </div>
         </div>
       ),
@@ -520,8 +595,8 @@ export default function SlidesPage() {
       id: 8,
       title: "Benefits of AI-Driven Development",
       content: (
-        <div className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="space-y-4 h-full overflow-y-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {[
               {
                 title: "1. Accelerated Development Speed",
@@ -555,13 +630,13 @@ export default function SlidesPage() {
             ].map((benefit, index) => (
               <Card
                 key={index}
-                className="bg-gradient-to-br from-green-50 to-blue-50 border-green-200"
+                className="bg-gradient-to-br from-blue-50 to-orange-50 border-blue-200"
               >
-                <CardContent className="p-4">
-                  <h4 className="font-semibold text-green-700 mb-3">
+                <CardContent className="p-3">
+                  <h4 className="font-semibold text-blue-600 mb-2 text-sm">
                     {benefit.title}
                   </h4>
-                  <ul className="space-y-1 text-sm text-gray-700">
+                  <ul className="space-y-1 text-xs text-gray-700">
                     {benefit.items.map((item, itemIndex) => (
                       <li key={itemIndex}>• {item}</li>
                     ))}
@@ -570,6 +645,16 @@ export default function SlidesPage() {
               </Card>
             ))}
           </div>
+
+          <div className="text-center pt-4">
+            <Button
+              onClick={handleEmailCTA}
+              className="bg-orange-500 hover:bg-orange-600 text-white"
+            >
+              <Mail className="h-4 w-4 mr-2" />
+              Discover AI Development Benefits
+            </Button>
+          </div>
         </div>
       ),
     },
@@ -577,8 +662,8 @@ export default function SlidesPage() {
       id: 9,
       title: "Challenges & Key Learnings",
       content: (
-        <div className="space-y-6">
-          <div className="space-y-4">
+        <div className="space-y-4 h-full overflow-y-auto">
+          <div className="space-y-3">
             {[
               {
                 title: "1. Prompt Engineering",
@@ -611,13 +696,13 @@ export default function SlidesPage() {
             ].map((challenge, index) => (
               <Card
                 key={index}
-                className="bg-gradient-to-br from-orange-50 to-red-50 border-orange-200"
+                className="bg-gradient-to-br from-orange-50 to-blue-50 border-orange-200"
               >
-                <CardContent className="p-4">
-                  <h4 className="font-semibold text-orange-700 mb-3">
+                <CardContent className="p-3">
+                  <h4 className="font-semibold text-orange-500 mb-2 text-sm">
                     {challenge.title}
                   </h4>
-                  <ul className="space-y-1 text-sm text-gray-700">
+                  <ul className="space-y-1 text-xs text-gray-700">
                     {challenge.items.map((item, itemIndex) => (
                       <li key={itemIndex}>• {item}</li>
                     ))}
@@ -633,12 +718,12 @@ export default function SlidesPage() {
       id: 10,
       title: "Future Enhancements & AI's Continued Role",
       content: (
-        <div className="space-y-6">
+        <div className="space-y-4 h-full overflow-y-auto">
           <div>
-            <h3 className="text-lg font-semibold text-blue-600 mb-4">
+            <h3 className="text-base font-semibold text-blue-600 mb-3">
               Next Steps for the Asset Management System
             </h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {[
                 {
                   title: "Full API Integration",
@@ -658,11 +743,11 @@ export default function SlidesPage() {
                 },
               ].map((step, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
-                  <CardContent className="p-4 text-center">
-                    <div className="font-semibold text-blue-600 mb-2">
+                  <CardContent className="p-3 text-center">
+                    <div className="font-semibold text-blue-600 mb-1 text-sm">
                       {step.title}
                     </div>
-                    <div className="text-sm text-gray-600">{step.desc}</div>
+                    <div className="text-xs text-gray-600">{step.desc}</div>
                   </CardContent>
                 </Card>
               ))}
@@ -670,10 +755,10 @@ export default function SlidesPage() {
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold text-blue-600 mb-4">
+            <h3 className="text-base font-semibold text-blue-600 mb-3">
               AI&apos;s Future Contribution
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {[
                 {
                   title: "Automated Testing",
@@ -694,17 +779,27 @@ export default function SlidesPage() {
               ].map((contribution, index) => (
                 <Card
                   key={index}
-                  className="bg-gradient-to-br from-green-50 to-blue-50 border-green-200"
+                  className="bg-gradient-to-br from-blue-50 to-orange-50 border-blue-200"
                 >
-                  <CardContent className="p-4">
-                    <h4 className="font-semibold text-green-700 mb-2">
+                  <CardContent className="p-3">
+                    <h4 className="font-semibold text-blue-600 mb-1 text-sm">
                       {contribution.title}
                     </h4>
-                    <p className="text-sm text-gray-700">{contribution.desc}</p>
+                    <p className="text-xs text-gray-700">{contribution.desc}</p>
                   </CardContent>
                 </Card>
               ))}
             </div>
+          </div>
+
+          <div className="text-center pt-4">
+            <Button
+              onClick={handleEmailCTA}
+              className="bg-orange-500 hover:bg-orange-600 text-white"
+            >
+              <Mail className="h-4 w-4 mr-2" />
+              Plan Your AI Development Roadmap
+            </Button>
           </div>
         </div>
       ),
@@ -713,20 +808,22 @@ export default function SlidesPage() {
       id: 11,
       title: "Conclusion: A New Development Paradigm",
       content: (
-        <div className="space-y-6">
-          <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-6 rounded-lg text-center">
-            <h3 className="text-xl font-semibold mb-2">The Journey</h3>
-            <p className="mb-2">
+        <div className="space-y-4 h-full overflow-y-auto">
+          <div className="bg-gradient-to-r from-blue-600 to-orange-500 text-white p-4 rounded-lg text-center">
+            <h3 className="text-lg font-semibold mb-2">The Journey</h3>
+            <p className="mb-2 text-sm">
               From concept to robust, feature-rich Asset Management System
             </p>
-            <p>A testament to the power of AI in modern software development</p>
+            <p className="text-sm">
+              A testament to the power of AI in modern software development
+            </p>
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold text-blue-600 mb-4">
+            <h3 className="text-base font-semibold text-blue-600 mb-3">
               Key Takeaways for Your Organization
             </h3>
-            <div className="grid md:grid-cols-3 gap-4">
+            <div className="grid md:grid-cols-3 gap-3">
               {[
                 {
                   role: "For CTOs",
@@ -754,11 +851,11 @@ export default function SlidesPage() {
                 },
               ].map((takeaway, index) => (
                 <Card key={index}>
-                  <CardContent className="p-4">
-                    <h4 className="font-semibold text-blue-600 mb-3">
+                  <CardContent className="p-3">
+                    <h4 className="font-semibold text-blue-600 mb-2 text-sm">
                       {takeaway.role}
                     </h4>
-                    <ul className="space-y-2 text-sm">
+                    <ul className="space-y-1 text-xs">
                       {takeaway.items.map((item, itemIndex) => (
                         <li key={itemIndex}>• {item}</li>
                       ))}
@@ -769,19 +866,30 @@ export default function SlidesPage() {
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-green-500 to-blue-600 text-white p-6 rounded-lg text-center">
-            <h3 className="text-xl font-semibold mb-2">
+          <div className="bg-gradient-to-r from-blue-600 to-orange-500 text-white p-4 rounded-lg text-center">
+            <h3 className="text-lg font-semibold mb-2">
               The Future of Development
             </h3>
-            <p className="font-semibold mb-2">
+            <p className="font-semibold mb-2 text-sm">
               AI is not just a tool; it&apos;s a transformative partner
             </p>
-            <p>The era of AI-driven software creation is here</p>
+            <p className="text-sm">
+              The era of AI-driven software creation is here
+            </p>
           </div>
 
           <div className="text-center space-y-4">
-            <h2 className="text-2xl font-bold text-gray-800">Thank You!</h2>
-            <p className="text-lg text-gray-600">Questions & Discussion</p>
+            <h2 className="text-2xl font-bold text-gray-800">
+              Questions & Discussion
+            </h2>
+            <Button
+              onClick={handleEmailCTA}
+              size="lg"
+              className="bg-orange-500 hover:bg-orange-600 text-white text-lg px-8 py-3"
+            >
+              <Mail className="h-5 w-5 mr-3" />
+              Contact Us
+            </Button>
           </div>
         </div>
       ),
@@ -849,7 +957,7 @@ export default function SlidesPage() {
   }, [nextSlide, prevSlide]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50">
       {/* Header */}
       <div className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
@@ -893,26 +1001,26 @@ export default function SlidesPage() {
       {/* Main Content */}
       <div
         ref={containerRef}
-        className="pt-20 pb-24 px-4"
+        className="pt-20 pb-24 px-4 h-screen"
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
       >
-        <div className="max-w-6xl mx-auto">
-          <div className="bg-white rounded-xl shadow-xl overflow-hidden">
-            <div className="p-8 md:p-12">
-              <div className="text-center mb-8">
-                <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
+        <div className="max-w-6xl mx-auto h-full">
+          <div className="bg-white rounded-xl shadow-xl overflow-hidden h-full flex flex-col">
+            <div className="p-6 md:p-8 flex-1 flex flex-col">
+              <div className="text-center mb-4 flex-shrink-0">
+                <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2">
                   {slides[currentSlide].title}
                 </h1>
                 {slides[currentSlide].subtitle && (
-                  <h2 className="text-xl md:text-2xl text-gray-600">
+                  <h2 className="text-lg md:text-xl text-gray-600">
                     {slides[currentSlide].subtitle}
                   </h2>
                 )}
               </div>
 
-              <div className="min-h-[400px] md:min-h-[500px]">
+              <div className="flex-1 overflow-hidden">
                 {slides[currentSlide].content}
               </div>
             </div>
