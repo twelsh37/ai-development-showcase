@@ -13,6 +13,7 @@ interface Slide {
   title: string;
   subtitle?: string;
   content: React.ReactNode;
+  ctaText?: string;
 }
 
 export default function SlidesPage() {
@@ -60,6 +61,7 @@ export default function SlidesPage() {
       id: 1,
       title: "Building an Asset Management System",
       subtitle: "An AI-Driven Development Journey with Cursor IDE",
+      ctaText: "Learn More About AI Development",
       content: (
         <div className="space-y-4 h-full overflow-y-auto">
           <div className="bg-gradient-to-r from-blue-600 to-orange-500 text-white p-4 rounded-lg text-center">
@@ -104,22 +106,13 @@ export default function SlidesPage() {
               </CardContent>
             </Card>
           </div>
-
-          <div className="text-center pt-4">
-            <Button
-              onClick={handleEmailCTA}
-              className="bg-orange-500 hover:bg-orange-600 text-white"
-            >
-              <Mail className="h-4 w-4 mr-2" />
-              Learn More About AI Development
-            </Button>
-          </div>
         </div>
       ),
     },
     {
       id: 2,
       title: "Asset Management System Overview",
+      ctaText: "Discuss Your Asset Management Needs",
       content: (
         <div className="space-y-4 h-full overflow-y-auto">
           <div className="bg-gradient-to-r from-blue-600 to-orange-500 text-white p-4 rounded-lg text-center">
@@ -170,22 +163,13 @@ export default function SlidesPage() {
               </Card>
             ))}
           </div>
-
-          <div className="text-center pt-4">
-            <Button
-              onClick={handleEmailCTA}
-              className="bg-orange-500 hover:bg-orange-600 text-white"
-            >
-              <Mail className="h-4 w-4 mr-2" />
-              Discuss Your Asset Management Needs
-            </Button>
-          </div>
         </div>
       ),
     },
     {
       id: 3,
       title: "Key Features: AI's Implementation Impact",
+      ctaText: "Explore AI Implementation Strategies",
       content: (
         <div className="space-y-4 h-full overflow-y-auto">
           <div className="space-y-3">
@@ -253,22 +237,13 @@ export default function SlidesPage() {
               </Card>
             </div>
           </div>
-
-          <div className="text-center pt-4">
-            <Button
-              onClick={handleEmailCTA}
-              className="bg-orange-500 hover:bg-orange-600 text-white"
-            >
-              <Mail className="h-4 w-4 mr-2" />
-              Explore AI Implementation Strategies
-            </Button>
-          </div>
         </div>
       ),
     },
     {
       id: 4,
       title: "Key Features: AI's Implementation Impact (Continued)",
+      ctaText: "Learn About Database Architecture",
       content: (
         <div className="space-y-4 h-full overflow-y-auto">
           <div className="space-y-3">
@@ -336,22 +311,13 @@ export default function SlidesPage() {
               </Card>
             </div>
           </div>
-
-          <div className="text-center pt-4">
-            <Button
-              onClick={handleEmailCTA}
-              className="bg-orange-500 hover:bg-orange-600 text-white"
-            >
-              <Mail className="h-4 w-4 mr-2" />
-              Learn About Database Architecture
-            </Button>
-          </div>
         </div>
       ),
     },
     {
       id: 5,
       title: "Technical Architecture: Built with AI",
+      ctaText: "Discuss Technical Architecture",
       content: (
         <div className="space-y-4 h-full overflow-y-auto">
           <div className="space-y-3">
@@ -421,22 +387,13 @@ export default function SlidesPage() {
               </div>
             </div>
           </div>
-
-          <div className="text-center pt-4">
-            <Button
-              onClick={handleEmailCTA}
-              className="bg-orange-500 hover:bg-orange-600 text-white"
-            >
-              <Mail className="h-4 w-4 mr-2" />
-              Discuss Technical Architecture
-            </Button>
-          </div>
         </div>
       ),
     },
     {
       id: 6,
       title: "The AI Development Journey with Cursor IDE",
+      ctaText: "Learn About AI Development Process",
       content: (
         <div className="space-y-4 h-full overflow-y-auto">
           <div className="space-y-3">
@@ -504,22 +461,13 @@ export default function SlidesPage() {
               </Card>
             </div>
           </div>
-
-          <div className="text-center pt-4">
-            <Button
-              onClick={handleEmailCTA}
-              className="bg-orange-500 hover:bg-orange-600 text-white"
-            >
-              <Mail className="h-4 w-4 mr-2" />
-              Learn About AI Development Process
-            </Button>
-          </div>
         </div>
       ),
     },
     {
       id: 7,
       title: "The AI Development Journey (Continued)",
+      ctaText: "Explore AI Learning Strategies",
       content: (
         <div className="space-y-4 h-full overflow-y-auto">
           <div className="space-y-3">
@@ -578,22 +526,13 @@ export default function SlidesPage() {
               learning and implementation of complex integrations
             </p>
           </div>
-
-          <div className="text-center pt-4">
-            <Button
-              onClick={handleEmailCTA}
-              className="bg-orange-500 hover:bg-orange-600 text-white"
-            >
-              <Mail className="h-4 w-4 mr-2" />
-              Explore AI Learning Strategies
-            </Button>
-          </div>
         </div>
       ),
     },
     {
       id: 8,
       title: "Benefits of AI-Driven Development",
+      ctaText: "Discover AI Development Benefits",
       content: (
         <div className="space-y-4 h-full overflow-y-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -644,16 +583,6 @@ export default function SlidesPage() {
                 </CardContent>
               </Card>
             ))}
-          </div>
-
-          <div className="text-center pt-4">
-            <Button
-              onClick={handleEmailCTA}
-              className="bg-orange-500 hover:bg-orange-600 text-white"
-            >
-              <Mail className="h-4 w-4 mr-2" />
-              Discover AI Development Benefits
-            </Button>
           </div>
         </div>
       ),
@@ -717,6 +646,7 @@ export default function SlidesPage() {
     {
       id: 10,
       title: "Future Enhancements & AI's Continued Role",
+      ctaText: "Plan Your AI Development Roadmap",
       content: (
         <div className="space-y-4 h-full overflow-y-auto">
           <div>
@@ -791,22 +721,101 @@ export default function SlidesPage() {
               ))}
             </div>
           </div>
-
-          <div className="text-center pt-4">
-            <Button
-              onClick={handleEmailCTA}
-              className="bg-orange-500 hover:bg-orange-600 text-white"
-            >
-              <Mail className="h-4 w-4 mr-2" />
-              Plan Your AI Development Roadmap
-            </Button>
-          </div>
         </div>
       ),
     },
     {
       id: 11,
+      title: "The Future of Development",
+      ctaText: "Shape the Future of Development",
+      content: (
+        <div className="space-y-4 h-full overflow-y-auto">
+          <div className="bg-gradient-to-r from-blue-600 to-orange-500 text-white p-4 rounded-lg text-center">
+            <h3 className="text-lg font-semibold mb-2">
+              The Paradigm Shift is Here
+            </h3>
+            <p className="text-sm">
+              AI is not just a tool; it&apos;s a transformative partner in
+              software creation
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              {
+                title: "🚀 Development Velocity",
+                points: [
+                  "10x faster feature development",
+                  "Reduced time-to-market",
+                  "Rapid prototyping capabilities",
+                  "Instant code generation",
+                ],
+              },
+              {
+                title: "🎯 Code Quality",
+                points: [
+                  "Consistent best practices",
+                  "Automated code reviews",
+                  "Proactive bug detection",
+                  "Type-safe implementations",
+                ],
+              },
+              {
+                title: "👥 Team Transformation",
+                points: [
+                  "Single developer full-stack",
+                  "Reduced junior developer ramp-up",
+                  "Focus on architecture & strategy",
+                  "Democratized development access",
+                ],
+              },
+              {
+                title: "💡 Innovation Acceleration",
+                points: [
+                  "Complex feature implementation",
+                  "New technology adoption",
+                  "Creative problem solving",
+                  "Competitive advantage",
+                ],
+              },
+            ].map((section, index) => (
+              <Card
+                key={index}
+                className="bg-gradient-to-br from-blue-50 to-orange-50 border-blue-200"
+              >
+                <CardContent className="p-4">
+                  <h4 className="font-bold text-blue-600 mb-3 text-base">
+                    {section.title}
+                  </h4>
+                  <ul className="space-y-2 text-sm">
+                    {section.points.map((point, pointIndex) => (
+                      <li key={pointIndex} className="flex items-start">
+                        <span className="text-orange-500 mr-2">•</span>
+                        <span className="text-gray-700">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="bg-gradient-to-r from-orange-500 to-blue-600 text-white p-4 rounded-lg text-center">
+            <h3 className="text-lg font-semibold mb-2">
+              The Era of AI-Driven Software Creation
+            </h3>
+            <p className="text-sm font-medium">
+              Organizations that embrace AI development will lead the next
+              decade of innovation
+            </p>
+          </div>
+        </div>
+      ),
+    },
+    {
+      id: 12,
       title: "Conclusion: A New Development Paradigm",
+      ctaText: "Contact Us",
       content: (
         <div className="space-y-4 h-full overflow-y-auto">
           <div className="bg-gradient-to-r from-blue-600 to-orange-500 text-white p-4 rounded-lg text-center">
@@ -866,30 +875,10 @@ export default function SlidesPage() {
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-blue-600 to-orange-500 text-white p-4 rounded-lg text-center">
-            <h3 className="text-lg font-semibold mb-2">
-              The Future of Development
-            </h3>
-            <p className="font-semibold mb-2 text-sm">
-              AI is not just a tool; it&apos;s a transformative partner
-            </p>
-            <p className="text-sm">
-              The era of AI-driven software creation is here
-            </p>
-          </div>
-
-          <div className="text-center space-y-4">
+          <div className="text-center">
             <h2 className="text-2xl font-bold text-gray-800">
               Questions & Discussion
             </h2>
-            <Button
-              onClick={handleEmailCTA}
-              size="lg"
-              className="bg-orange-500 hover:bg-orange-600 text-white text-lg px-8 py-3"
-            >
-              <Mail className="h-5 w-5 mr-3" />
-              Contact Us
-            </Button>
           </div>
         </div>
       ),
@@ -1001,7 +990,7 @@ export default function SlidesPage() {
       {/* Main Content */}
       <div
         ref={containerRef}
-        className="pt-20 pb-24 px-4 h-screen"
+        className="pt-20 pb-32 px-4 h-screen"
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
@@ -1024,6 +1013,21 @@ export default function SlidesPage() {
                 {slides[currentSlide].content}
               </div>
             </div>
+
+            {/* Footer with CTA Button */}
+            {slides[currentSlide].ctaText && (
+              <div className="border-t border-gray-200 bg-gray-50 px-6 md:px-8 py-4 flex-shrink-0">
+                <div className="text-center">
+                  <Button
+                    onClick={handleEmailCTA}
+                    className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-2 text-base font-medium"
+                  >
+                    <Mail className="h-4 w-4 mr-2" />
+                    {slides[currentSlide].ctaText}
+                  </Button>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
