@@ -71,24 +71,7 @@ Best regards`);
     window.location.href = `mailto:tom.welsh@theaiaa.com?subject=${subject}&body=${body}`;
   };
 
-  // Enhanced keyboard navigation
-  const handleKeyPress = useCallback((event: KeyboardEvent) => {
-    switch (event.key) {
-      case "ArrowLeft":
-        prevSlide();
-        break;
-      case "ArrowRight":
-        nextSlide();
-        break;
-      case " ":
-        event.preventDefault();
-        toggleAutoPlay();
-        break;
-      case "Escape":
-        setIsAutoPlaying(false);
-        break;
-    }
-  }, []);
+
 
   const slides: Slide[] = [
     {
@@ -1346,8 +1329,8 @@ Best regards`);
                 Ready to Transform Your Development Process?
               </h3>
               <p className="text-sm font-medium">
-                Let's discuss how AI-driven development can revolutionize your
-                organization's software capabilities
+                Let&apos;s discuss how AI-driven development can revolutionize your
+                organization&apos;s software capabilities
               </p>
             </div>
             <div className="absolute top-2 right-2 w-4 h-4 bg-white/20 rounded-full animate-ping"></div>
@@ -1366,9 +1349,9 @@ Best regards`);
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   }, [slides.length]);
 
-  const toggleAutoPlay = () => {
+  const toggleAutoPlay = useCallback(() => {
     setIsAutoPlaying(!isAutoPlaying);
-  };
+  }, [isAutoPlaying]);
 
   // Auto-play functionality
   useEffect(() => {
