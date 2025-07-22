@@ -52,113 +52,273 @@ export default function SlidesPage() {
   };
 
   const handleEmailCTA = () => {
-    window.location.href =
-      "mailto:tom.welsh@theaiaa.com?subject=Slide Deck - AI-Driven Development Showcase";
+    const subject = encodeURIComponent(
+      "🚀 Ready to 10x Your Development Team with AI"
+    );
+    const body = encodeURIComponent(`Hi Tom,
+
+I just witnessed the future of software development in your presentation.
+
+What I need to know:
+• How quickly can we implement AI-driven development?
+• What's the investment required?
+• Can you help us get started?
+
+I'm ready to transform our development process.
+
+Best regards`);
+
+    window.location.href = `mailto:tom.welsh@theaiaa.com?subject=${subject}&body=${body}`;
   };
+
+  // Enhanced keyboard navigation
+  const handleKeyPress = useCallback((event: KeyboardEvent) => {
+    switch (event.key) {
+      case "ArrowLeft":
+        prevSlide();
+        break;
+      case "ArrowRight":
+        nextSlide();
+        break;
+      case " ":
+        event.preventDefault();
+        toggleAutoPlay();
+        break;
+      case "Escape":
+        setIsAutoPlaying(false);
+        break;
+    }
+  }, []);
 
   const slides: Slide[] = [
     {
       id: 1,
-      title: "Building an Asset Management System",
-      subtitle: "An AI-Driven Development Journey with Cursor IDE",
-      ctaText: "Learn More About AI Development",
+      title: "🚀 The Future is Here",
+      subtitle: "One Developer = An Entire Engineering Team",
+      ctaText: "Show Me How to 10x My Development Team",
       content: (
-        <div className="space-y-4 h-full overflow-y-auto">
-          <div className="bg-gradient-to-r from-blue-600 to-orange-500 text-white p-4 rounded-lg text-center">
-            <h3 className="text-lg font-semibold mb-2">
-              The Vision: 100% AI-Driven Development
-            </h3>
-            <p className="text-sm">
-              Exploring how generative AI can transform complex software
-              projects
-            </p>
+        <div className="space-y-6 h-full overflow-y-auto">
+          <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-orange-500 text-white p-6 rounded-2xl text-center shadow-2xl relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-50"></div>
+            <div className="relative z-10">
+              <h3 className="text-2xl font-bold mb-3 animate-pulse">
+                🚀 The Vision: 100% AI-Driven Development
+              </h3>
+              <p className="text-lg font-medium">
+                Where human creativity meets artificial intelligence to create
+                software that was once impossible
+              </p>
+            </div>
+            <div className="absolute top-2 right-2 w-4 h-4 bg-white/20 rounded-full animate-ping"></div>
+            <div className="absolute bottom-2 left-2 w-3 h-3 bg-white/20 rounded-full animate-ping delay-1000"></div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-3">
-            <Card>
-              <CardContent className="p-3">
-                <h4 className="font-semibold text-base mb-2 text-blue-600">
-                  The Challenge
-                </h4>
-                <ul className="space-y-1 text-xs">
-                  <li>• Comprehensive asset lifecycle tracking</li>
-                  <li>• Multi-device support (phones, laptops, monitors)</li>
-                  <li>• Real-time dashboard & reporting</li>
-                  <li>• Barcode scanning capabilities</li>
-                  <li>• Scalable, maintainable architecture</li>
-                </ul>
-              </CardContent>
-            </Card>
+          <div className="grid md:grid-cols-2 gap-6 flex-1 items-start">
+            <div className="space-y-4">
+              <Card className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 backdrop-blur-sm border-blue-400/30 hover:border-blue-400/50 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-blue-500/25">
+                <CardContent className="p-3">
+                  <h4 className="font-bold text-sm mb-2 text-blue-400 flex items-center">
+                    <span className="w-2 h-2 bg-blue-400 rounded-full mr-2 animate-pulse"></span>
+                    The Challenge
+                  </h4>
+                  <ul className="space-y-1 text-xs text-gray-300">
+                    <li className="flex items-center">
+                      • Comprehensive asset lifecycle tracking
+                    </li>
+                    <li className="flex items-center">
+                      • Multi-device support (phones, laptops, monitors)
+                    </li>
+                    <li className="flex items-center">
+                      • Real-time dashboard & reporting
+                    </li>
+                    <li className="flex items-center">
+                      • Barcode scanning capabilities
+                    </li>
+                    <li className="flex items-center">
+                      • Scalable, maintainable architecture
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
 
-            <Card>
-              <CardContent className="p-3">
-                <h4 className="font-semibold text-base mb-2 text-orange-500">
-                  The Approach
-                </h4>
-                <ul className="space-y-1 text-xs">
-                  <li>
-                    • <strong>100% AI-Driven Development</strong>
-                  </li>
-                  <li>• Cursor IDE as primary environment</li>
-                  <li>• Generative AI for complex features</li>
-                  <li>• Human oversight for architecture</li>
-                </ul>
-              </CardContent>
-            </Card>
+              <Card className="bg-gradient-to-br from-orange-500/10 to-red-500/10 backdrop-blur-sm border-orange-400/30 hover:border-orange-400/50 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-orange-500/25">
+                <CardContent className="p-3">
+                  <h4 className="font-bold text-sm mb-2 text-orange-400 flex items-center">
+                    <span className="w-2 h-2 bg-orange-400 rounded-full mr-2 animate-pulse"></span>
+                    The Approach
+                  </h4>
+                  <ul className="space-y-1 text-xs text-gray-300">
+                    <li className="flex items-center">
+                      •{" "}
+                      <strong className="text-orange-400">
+                        100% AI-Driven Development
+                      </strong>
+                    </li>
+                    <li className="flex items-center">
+                      • Cursor IDE as primary environment
+                    </li>
+                    <li className="flex items-center">
+                      • Generative AI for complex features
+                    </li>
+                    <li className="flex items-center">
+                      • Human oversight for architecture
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div className="relative h-80 overflow-hidden rounded-xl flex items-center justify-center">
+              <div
+                className="absolute inset-0 bg-cover bg-center"
+                style={{
+                  backgroundImage: "url(/dashboard.jpg)",
+                  backgroundPosition: "center 30%",
+                  maskImage: `
+                    linear-gradient(45deg,
+                      transparent 0%,
+                      transparent 35%,
+                      black 35%,
+                      black 100%
+                    ),
+                    radial-gradient(ellipse at 35% 35%, transparent 0%, transparent 30%, black 30%, black 40%, transparent 40%, transparent 50%, black 50%, black 60%, transparent 60%, transparent 70%, black 70%, black 80%, transparent 80%, transparent 90%, black 90%, black 100%),
+                    radial-gradient(ellipse at 40% 40%, transparent 0%, transparent 25%, black 25%, black 35%, transparent 35%, transparent 45%, black 45%, black 55%, transparent 55%, transparent 65%, black 65%, black 75%, transparent 75%, transparent 85%, black 85%, black 95%, transparent 95%),
+                    radial-gradient(ellipse at 45% 45%, transparent 0%, transparent 20%, black 20%, black 30%, transparent 30%, transparent 40%, black 40%, black 50%, transparent 50%, transparent 60%, black 60%, black 70%, transparent 70%, transparent 80%, black 80%, black 90%, transparent 90%),
+                    radial-gradient(ellipse at 50% 50%, transparent 0%, transparent 15%, black 15%, black 25%, transparent 25%, transparent 35%, black 35%, black 45%, transparent 45%, transparent 55%, black 55%, black 65%, transparent 65%, transparent 75%, black 75%, black 85%, transparent 85%),
+                    radial-gradient(ellipse at 55% 55%, transparent 0%, transparent 10%, black 10%, black 20%, transparent 20%, transparent 30%, black 30%, black 40%, transparent 40%, transparent 50%, black 50%, black 60%, transparent 60%, transparent 70%, black 70%, black 80%, transparent 80%),
+                    radial-gradient(ellipse at 60% 60%, transparent 0%, transparent 5%, black 5%, black 15%, transparent 15%, transparent 25%, black 25%, black 35%, transparent 35%, transparent 45%, black 45%, black 55%, transparent 55%, transparent 65%, black 65%, black 75%, transparent 75%)
+                  `,
+                  maskSize: "100% 100%",
+                  maskRepeat: "no-repeat",
+                  WebkitMaskImage: `
+                    linear-gradient(45deg,
+                      transparent 0%,
+                      transparent 35%,
+                      black 35%,
+                      black 100%
+                    ),
+                    radial-gradient(ellipse at 35% 35%, transparent 0%, transparent 30%, black 30%, black 40%, transparent 40%, transparent 50%, black 50%, black 60%, transparent 60%, transparent 70%, black 70%, black 80%, transparent 80%, transparent 90%, black 90%, black 100%),
+                    radial-gradient(ellipse at 40% 40%, transparent 0%, transparent 25%, black 25%, black 35%, transparent 35%, transparent 45%, black 45%, black 55%, transparent 55%, transparent 65%, black 65%, black 75%, transparent 75%, transparent 85%, black 85%, black 95%, transparent 95%),
+                    radial-gradient(ellipse at 45% 45%, transparent 0%, transparent 20%, black 20%, black 30%, transparent 30%, transparent 40%, black 40%, black 50%, transparent 50%, transparent 60%, black 60%, black 70%, transparent 70%, transparent 80%, black 80%, black 90%, transparent 90%),
+                    radial-gradient(ellipse at 50% 50%, transparent 0%, transparent 15%, black 15%, black 25%, transparent 25%, transparent 35%, black 35%, black 45%, transparent 45%, transparent 55%, black 55%, black 65%, transparent 65%, transparent 75%, black 75%, black 85%, transparent 85%),
+                    radial-gradient(ellipse at 55% 55%, transparent 0%, transparent 10%, black 10%, black 20%, transparent 20%, transparent 30%, black 30%, black 40%, transparent 40%, transparent 50%, black 50%, black 60%, transparent 60%, transparent 70%, black 70%, black 80%, transparent 80%),
+                    radial-gradient(ellipse at 60% 60%, transparent 0%, transparent 5%, black 5%, black 15%, transparent 15%, transparent 25%, black 25%, black 35%, transparent 35%, transparent 45%, black 45%, black 55%, transparent 55%, transparent 65%, black 65%, black 75%, transparent 75%)
+                  `,
+                  WebkitMaskSize: "100% 100%",
+                  WebkitMaskRepeat: "no-repeat",
+                }}
+              />
+
+              {/* Torn edge overlay for realistic paper effect */}
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background: `
+                    linear-gradient(45deg,
+                      transparent 0%,
+                      transparent 34%,
+                      rgba(255,255,255,0.9) 34%,
+                      rgba(255,255,255,0.9) 36%,
+                      transparent 36%,
+                      transparent 100%
+                    ),
+                    radial-gradient(ellipse at 35% 35%, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.8) 2%, transparent 2%, transparent 4%, rgba(255,255,255,0.8) 4%, rgba(255,255,255,0.8) 6%, transparent 6%, transparent 8%, rgba(255,255,255,0.8) 8%, rgba(255,255,255,0.8) 10%, transparent 10%),
+                    radial-gradient(ellipse at 40% 40%, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.8) 2%, transparent 2%, transparent 4%, rgba(255,255,255,0.8) 4%, rgba(255,255,255,0.8) 6%, transparent 6%, transparent 8%, rgba(255,255,255,0.8) 8%, rgba(255,255,255,0.8) 10%, transparent 10%),
+                    radial-gradient(ellipse at 45% 45%, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.8) 2%, transparent 2%, transparent 4%, rgba(255,255,255,0.8) 4%, rgba(255,255,255,0.8) 6%, transparent 6%, transparent 8%, rgba(255,255,255,0.8) 8%, rgba(255,255,255,0.8) 10%, transparent 10%),
+                    radial-gradient(ellipse at 50% 50%, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.8) 2%, transparent 2%, transparent 4%, rgba(255,255,255,0.8) 4%, rgba(255,255,255,0.8) 6%, transparent 6%, transparent 8%, rgba(255,255,255,0.8) 8%, rgba(255,255,255,0.8) 10%, transparent 10%),
+                    radial-gradient(ellipse at 55% 55%, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.8) 2%, transparent 2%, transparent 4%, rgba(255,255,255,0.8) 4%, rgba(255,255,255,0.8) 6%, transparent 6%, transparent 8%, rgba(255,255,255,0.8) 8%, rgba(255,255,255,0.8) 10%, transparent 10%),
+                    radial-gradient(ellipse at 60% 60%, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.8) 2%, transparent 2%, transparent 4%, rgba(255,255,255,0.8) 4%, rgba(255,255,255,0.8) 6%, transparent 6%, transparent 8%, rgba(255,255,255,0.8) 8%, rgba(255,255,255,0.8) 10%, transparent 10%)
+                  `,
+                  backgroundSize: "100% 100%",
+                  backgroundRepeat: "no-repeat",
+                }}
+              />
+
+              {/* Shadow for depth */}
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  boxShadow: "inset 0 0 20px rgba(0,0,0,0.3)",
+                  borderRadius: "0 8px 8px 0",
+                }}
+              />
+            </div>
           </div>
         </div>
       ),
     },
     {
       id: 2,
-      title: "Asset Management System Overview",
-      ctaText: "Discuss Your Asset Management Needs",
+      title:
+        "⚡ The Secret Weapon: Your Complete AI-Powered Development Arsenal",
+      ctaText: "Give Me the AI Development Arsenal",
       content: (
-        <div className="space-y-4 h-full overflow-y-auto">
-          <div className="bg-gradient-to-r from-blue-600 to-orange-500 text-white p-4 rounded-lg text-center">
-            <h3 className="text-lg font-semibold mb-2">Core Purpose</h3>
-            <p className="text-sm">
-              Streamline IT asset tracking, management, and lifecycle control
-              within organizations
-            </p>
+        <div className="space-y-2 h-full overflow-y-auto">
+          <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-orange-500 text-white p-4 rounded-2xl text-center shadow-2xl relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-50"></div>
+            <div className="relative z-10">
+              <h3 className="text-lg font-bold mb-2 animate-pulse">
+                ⚡ Core Purpose
+              </h3>
+              <p className="text-sm font-medium">
+                Transform how organizations manage their digital assets with
+                AI-powered intelligence and automation
+              </p>
+            </div>
+            <div className="absolute top-2 right-2 w-4 h-4 bg-white/20 rounded-full animate-ping"></div>
+            <div className="absolute bottom-2 left-2 w-3 h-3 bg-white/20 rounded-full animate-ping delay-1000"></div>
           </div>
 
-          <h3 className="text-lg font-semibold text-gray-800">
-            Key Modules Built with AI
+          <h3 className="text-sm font-semibold text-white mb-2">
+            🎯 Key Modules Built with AI
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
             {[
               {
                 title: "Asset Management",
                 desc: "Lifecycle states, assignments, records",
+                icon: "📦",
               },
               {
                 title: "User Management",
                 desc: "Role-based access, authentication",
+                icon: "👤",
               },
               {
                 title: "Location Tracking",
                 desc: "Physical and logical locations",
+                icon: "📍",
               },
               {
                 title: "Real-time Dashboard",
                 desc: "Insights, metrics, and KPIs",
+                icon: "📊",
               },
               {
                 title: "Reporting System",
                 desc: "Exportable inventory reports",
+                icon: "📋",
               },
               {
                 title: "Barcode Scanning",
                 desc: "USB and camera-based scanning",
+                icon: "📱",
               },
             ].map((module, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
-                <CardContent className="p-3 text-center">
-                  <div className="font-semibold text-blue-600 mb-1 text-sm">
+              <Card
+                key={index}
+                className="hover:shadow-xl transition-all duration-300 hover:scale-105 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border-white/20 hover:border-white/40 shadow-lg hover:shadow-blue-500/25 group"
+              >
+                <CardContent className="p-2 text-center">
+                  <div className="text-2xl mb-1 group-hover:scale-110 transition-transform duration-300">
+                    {module.icon}
+                  </div>
+                  <div className="font-bold text-blue-400 mb-1 text-xs group-hover:text-blue-300 transition-colors">
                     {module.title}
                   </div>
-                  <div className="text-xs text-gray-600">{module.desc}</div>
+                  <div className="text-xs text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors">
+                    {module.desc}
+                  </div>
                 </CardContent>
               </Card>
             ))}
@@ -168,73 +328,116 @@ export default function SlidesPage() {
     },
     {
       id: 3,
-      title: "Key Features: AI's Implementation Impact",
-      ctaText: "Explore AI Implementation Strategies",
+      title: "🎯 The Magic: AI That Thinks Like Your Best Developer",
+      ctaText: "Show Me the AI Development Magic",
       content: (
         <div className="space-y-4 h-full overflow-y-auto">
-          <div className="space-y-3">
-            <div>
-              <h3 className="text-base font-semibold text-blue-600 mb-2">
-                1. Comprehensive Asset Lifecycle Management
-              </h3>
-              <Card>
-                <CardContent className="p-3">
-                  <ul className="space-y-1 text-xs">
-                    <li>
-                      • <strong>AI-Generated State Transitions:</strong> Complex
-                      flows (AVAILABLE → SIGNED_OUT → BUILT → ISSUED)
-                    </li>
-                    <li>
-                      • <strong>Automated Audit Trail:</strong> Automatic
-                      history logging for every state change
-                    </li>
-                    <li>
-                      • <strong>Type Safety:</strong> Robust type-safe enums
-                      using Drizzle ORM
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="space-y-3">
+              <div>
+                <h3 className="text-base font-semibold text-blue-400 mb-2">
+                  1. Comprehensive Asset Lifecycle Management
+                </h3>
+                <Card className="bg-white/10 backdrop-blur-sm border-white/20">
+                  <CardContent className="p-3">
+                    <ul className="space-y-1 text-xs text-gray-300">
+                      <li>
+                        •{" "}
+                        <strong className="text-blue-400">
+                          AI-Generated State Transitions:
+                        </strong>{" "}
+                        Complex flows (AVAILABLE → SIGNED_OUT → BUILT → ISSUED)
+                      </li>
+                      <li>
+                        •{" "}
+                        <strong className="text-blue-400">
+                          Automated Audit Trail:
+                        </strong>{" "}
+                        Automatic history logging for every state change
+                      </li>
+                      <li>
+                        •{" "}
+                        <strong className="text-blue-400">Type Safety:</strong>{" "}
+                        Robust type-safe enums using Drizzle ORM
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </div>
+
+              <div>
+                <h3 className="text-base font-semibold text-blue-400 mb-2">
+                  2. Robust User Authentication
+                </h3>
+                <Card className="bg-white/10 backdrop-blur-sm border-white/20">
+                  <CardContent className="p-3">
+                    <ul className="space-y-1 text-xs text-gray-300">
+                      <li>
+                        •{" "}
+                        <strong className="text-blue-400">
+                          Supabase Integration:
+                        </strong>{" "}
+                        AI-guided setup of auth, environment variables, API keys
+                      </li>
+                      <li>
+                        •{" "}
+                        <strong className="text-blue-400">
+                          Security Best Practices:
+                        </strong>{" "}
+                        Password management, email verification, auth event
+                        logging
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </div>
+
+              <div>
+                <h3 className="text-base font-semibold text-blue-400 mb-2">
+                  3. Flexible Barcode Scanning
+                </h3>
+                <Card className="bg-white/10 backdrop-blur-sm border-white/20">
+                  <CardContent className="p-3">
+                    <ul className="space-y-1 text-xs text-gray-300">
+                      <li>
+                        •{" "}
+                        <strong className="text-blue-400">Dual Support:</strong>{" "}
+                        USB and camera-based scanning integration
+                      </li>
+                      <li>
+                        •{" "}
+                        <strong className="text-blue-400">
+                          QuaggaJS Integration:
+                        </strong>{" "}
+                        AI-assisted component integration and permissions
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
 
-            <div>
-              <h3 className="text-base font-semibold text-blue-600 mb-2">
-                2. Robust User Authentication
-              </h3>
-              <Card>
-                <CardContent className="p-3">
-                  <ul className="space-y-1 text-xs">
-                    <li>
-                      • <strong>Supabase Integration:</strong> AI-guided setup
-                      of auth, environment variables, API keys
-                    </li>
-                    <li>
-                      • <strong>Security Best Practices:</strong> Password
-                      management, email verification, auth event logging
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </div>
+            <div className="flex flex-col justify-between h-full">
+              <div className="text-center">
+                <img
+                  src="/multi-assign.jpg"
+                  alt="Barcode Scanning Interface"
+                  className="rounded-lg shadow-lg w-full h-auto object-cover"
+                  style={{
+                    maxHeight: "200px",
+                    objectPosition: "center bottom",
+                  }}
+                />
+              </div>
 
-            <div>
-              <h3 className="text-base font-semibold text-blue-600 mb-2">
-                3. Flexible Barcode Scanning
-              </h3>
-              <Card>
-                <CardContent className="p-3">
-                  <ul className="space-y-1 text-xs">
-                    <li>
-                      • <strong>Dual Support:</strong> USB and camera-based
-                      scanning integration
-                    </li>
-                    <li>
-                      • <strong>QuaggaJS Integration:</strong> AI-assisted
-                      component integration and permissions
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
+              <div className="text-center mt-2">
+                <img
+                  src="/login.jpg"
+                  alt="User Authentication Interface"
+                  className="rounded-lg shadow-lg w-full h-auto object-cover"
+                  style={{ maxHeight: "220px" }}
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -242,73 +445,102 @@ export default function SlidesPage() {
     },
     {
       id: 4,
-      title: "Key Features: AI's Implementation Impact (Continued)",
-      ctaText: "Learn About Database Architecture",
+      title: "🏗️ The Foundation: Built for Scale, Designed for Domination",
+      ctaText: "Build My Future-Proof Architecture",
       content: (
         <div className="space-y-4 h-full overflow-y-auto">
-          <div className="space-y-3">
-            <div>
-              <h3 className="text-base font-semibold text-blue-600 mb-2">
-                4. Interactive Dashboard & Reporting
-              </h3>
-              <Card>
-                <CardContent className="p-3">
-                  <ul className="space-y-1 text-xs">
-                    <li>
-                      • <strong>Real-time Metrics:</strong> AI-assisted complex
-                      database query aggregation
-                    </li>
-                    <li>
-                      • <strong>PDF Export:</strong> Browserless.io integration
-                      for serverless PDF generation
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="space-y-3">
+              <div>
+                <h3 className="text-base font-semibold text-blue-400 mb-2">
+                  4. Interactive Dashboard & Reporting
+                </h3>
+                <Card className="bg-white/10 backdrop-blur-sm border-white/20">
+                  <CardContent className="p-3">
+                    <ul className="space-y-1 text-xs text-gray-300">
+                      <li>
+                        •{" "}
+                        <strong className="text-blue-400">
+                          Real-time Metrics:
+                        </strong>{" "}
+                        AI-assisted complex database query aggregation
+                      </li>
+                      <li>
+                        • <strong className="text-blue-400">PDF Export:</strong>{" "}
+                        Browserless.io integration for serverless PDF generation
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </div>
+
+              <div>
+                <h3 className="text-base font-semibold text-blue-400 mb-2">
+                  5. Type-Safe Database Layer
+                </h3>
+                <Card className="bg-white/10 backdrop-blur-sm border-white/20">
+                  <CardContent className="p-3">
+                    <ul className="space-y-1 text-xs text-gray-300">
+                      <li>
+                        •{" "}
+                        <strong className="text-blue-400">
+                          Drizzle ORM & Neon Postgres:
+                        </strong>{" "}
+                        Complete migration from raw SQL to modern ORM
+                      </li>
+                      <li>
+                        •{" "}
+                        <strong className="text-blue-400">
+                          Schema Definition:
+                        </strong>{" "}
+                        UUID primary keys, soft deletes, automatic timestamps
+                      </li>
+                      <li>
+                        •{" "}
+                        <strong className="text-blue-400">
+                          Migration Workflow:
+                        </strong>{" "}
+                        AI guidance on generating and applying migrations
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </div>
+
+              <div>
+                <h3 className="text-base font-semibold text-blue-400 mb-2">
+                  6. Comprehensive Logging & Error Handling
+                </h3>
+                <Card className="bg-white/10 backdrop-blur-sm border-white/20">
+                  <CardContent className="p-3">
+                    <ul className="space-y-1 text-xs text-gray-300">
+                      <li>
+                        •{" "}
+                        <strong className="text-blue-400">
+                          Server-Side Logging:
+                        </strong>{" "}
+                        Critical events logged for Vercel compatibility
+                      </li>
+                      <li>
+                        •{" "}
+                        <strong className="text-blue-400">
+                          Error Boundaries:
+                        </strong>{" "}
+                        Robust error trapping with user-friendly fallback UIs
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
 
-            <div>
-              <h3 className="text-base font-semibold text-blue-600 mb-2">
-                5. Type-Safe Database Layer
-              </h3>
-              <Card>
-                <CardContent className="p-3">
-                  <ul className="space-y-1 text-xs">
-                    <li>
-                      • <strong>Drizzle ORM & Neon Postgres:</strong> Complete
-                      migration from raw SQL to modern ORM
-                    </li>
-                    <li>
-                      • <strong>Schema Definition:</strong> UUID primary keys,
-                      soft deletes, automatic timestamps
-                    </li>
-                    <li>
-                      • <strong>Migration Workflow:</strong> AI guidance on
-                      generating and applying migrations
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </div>
-
-            <div>
-              <h3 className="text-base font-semibold text-blue-600 mb-2">
-                6. Comprehensive Logging & Error Handling
-              </h3>
-              <Card>
-                <CardContent className="p-3">
-                  <ul className="space-y-1 text-xs">
-                    <li>
-                      • <strong>Server-Side Logging:</strong> Critical events
-                      logged for Vercel compatibility
-                    </li>
-                    <li>
-                      • <strong>Error Boundaries:</strong> Robust error trapping
-                      with user-friendly fallback UIs
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
+            <div className="flex items-center justify-center">
+              <img
+                src="/dashboard.jpg"
+                alt="Interactive Dashboard with Real-time Metrics"
+                className="rounded-lg shadow-lg w-full h-auto object-cover"
+                style={{ maxHeight: "400px" }}
+              />
             </div>
           </div>
         </div>
@@ -316,69 +548,217 @@ export default function SlidesPage() {
     },
     {
       id: 5,
-      title: "Technical Architecture: Built with AI",
-      ctaText: "Discuss Technical Architecture",
+      title:
+        "🎼 The Symphony: Technologies That Dance Together in Perfect Harmony",
       content: (
         <div className="space-y-4 h-full overflow-y-auto">
           <div className="space-y-3">
-            <div>
-              <h3 className="text-base font-semibold text-blue-600 mb-2">
+            <div className="mb-4">
+              <h3 className="text-lg font-bold text-blue-600 mb-4 flex items-center">
+                <div className="w-8 h-1 bg-gradient-to-r from-blue-500 to-orange-500 rounded-full mr-3"></div>
                 Frontend Stack
               </h3>
-              <div className="flex flex-wrap gap-2">
-                {[
-                  "Next.js 15 + TypeScript",
-                  "Shadcn/ui Components",
-                  "React Hooks & Context",
-                  "Lucide React Icons",
-                ].map((tech, index) => (
-                  <Badge key={index} variant="secondary" className="text-xs">
-                    {tech}
-                  </Badge>
-                ))}
+              <div className="grid grid-cols-5 gap-2">
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-orange-500/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+                  <Card className="relative bg-white/10 backdrop-blur-sm border-white/20 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 group-hover:bg-white/20">
+                    <CardContent className="p-2 text-center">
+                      <div className="text-xl mb-1 group-hover:scale-110 transition-transform duration-300">
+                        ⚛️
+                      </div>
+                      <div className="text-xs font-semibold text-white group-hover:text-blue-400 transition-colors">
+                        Next.js 15
+                      </div>
+                      <div className="text-xs text-gray-300 mt-1">
+                        React Framework
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-blue-400/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+                  <Card className="relative bg-white/10 backdrop-blur-sm border-white/20 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 group-hover:bg-white/20">
+                    <CardContent className="p-2 text-center">
+                      <div className="text-xl mb-1 group-hover:scale-110 transition-transform duration-300">
+                        🔷
+                      </div>
+                      <div className="text-xs font-semibold text-white group-hover:text-blue-400 transition-colors">
+                        TypeScript
+                      </div>
+                      <div className="text-xs text-gray-300 mt-1">
+                        Type Safety
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+                  <Card className="relative bg-white/10 backdrop-blur-sm border-white/20 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 group-hover:bg-white/20">
+                    <CardContent className="p-2 text-center">
+                      <div className="text-xl mb-1 group-hover:scale-110 transition-transform duration-300">
+                        🎨
+                      </div>
+                      <div className="text-xs font-semibold text-white group-hover:text-blue-400 transition-colors">
+                        Shadcn/ui
+                      </div>
+                      <div className="text-xs text-gray-300 mt-1">
+                        UI Components
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/20 to-orange-500/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+                  <Card className="relative bg-white/10 backdrop-blur-sm border-white/20 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 group-hover:bg-white/20">
+                    <CardContent className="p-2 text-center">
+                      <div className="text-xl mb-1 group-hover:scale-110 transition-transform duration-300">
+                        ⚡
+                      </div>
+                      <div className="text-xs font-semibold text-white group-hover:text-blue-400 transition-colors">
+                        React Hooks
+                      </div>
+                      <div className="text-xs text-gray-300 mt-1">
+                        State Management
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-teal-500/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+                  <Card className="relative bg-white/10 backdrop-blur-sm border-white/20 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 group-hover:bg-white/20">
+                    <CardContent className="p-2 text-center">
+                      <div className="text-xl mb-1 group-hover:scale-110 transition-transform duration-300">
+                        👁️
+                      </div>
+                      <div className="text-xs font-semibold text-white group-hover:text-blue-400 transition-colors">
+                        Lucide Icons
+                      </div>
+                      <div className="text-xs text-gray-300 mt-1">
+                        Icon Library
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
               </div>
             </div>
 
             <div>
-              <h3 className="text-base font-semibold text-blue-600 mb-2">
+              <h3 className="text-lg font-bold text-blue-600 mb-4 flex items-center">
+                <div className="w-8 h-1 bg-gradient-to-r from-orange-500 to-blue-500 rounded-full mr-3"></div>
                 Backend Stack
               </h3>
-              <div className="flex flex-wrap gap-2">
-                {[
-                  "Next.js API Routes",
-                  "PostgreSQL + Drizzle ORM",
-                  "Vercel Deployment",
-                  "Browserless.io PDF",
-                ].map((tech, index) => (
-                  <Badge key={index} variant="secondary" className="text-xs">
-                    {tech}
-                  </Badge>
-                ))}
+              <div className="grid grid-cols-5 gap-2">
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+                  <Card className="relative bg-white/10 backdrop-blur-sm border-white/20 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 group-hover:bg-white/20">
+                    <CardContent className="p-2 text-center">
+                      <div className="text-xl mb-1 group-hover:scale-110 transition-transform duration-300">
+                        🔌
+                      </div>
+                      <div className="text-xs font-semibold text-white group-hover:text-blue-400 transition-colors">
+                        API Routes
+                      </div>
+                      <div className="text-xs text-gray-300 mt-1">
+                        Server Endpoints
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+                  <Card className="relative bg-white/10 backdrop-blur-sm border-white/20 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 group-hover:bg-white/20">
+                    <CardContent className="p-2 text-center">
+                      <div className="text-xl mb-1 group-hover:scale-110 transition-transform duration-300">
+                        🐘
+                      </div>
+                      <div className="text-xs font-semibold text-white group-hover:text-blue-400 transition-colors">
+                        PostgreSQL
+                      </div>
+                      <div className="text-xs text-gray-300 mt-1">Database</div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+                  <Card className="relative bg-white/10 backdrop-blur-sm border-white/20 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 group-hover:bg-white/20">
+                    <CardContent className="p-2 text-center">
+                      <div className="text-xl mb-1 group-hover:scale-110 transition-transform duration-300">
+                        🌊
+                      </div>
+                      <div className="text-xs font-semibold text-white group-hover:text-blue-400 transition-colors">
+                        Drizzle ORM
+                      </div>
+                      <div className="text-xs text-gray-300 mt-1">
+                        Data Layer
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-black/20 to-gray-500/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+                  <Card className="relative bg-white/10 backdrop-blur-sm border-white/20 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 group-hover:bg-white/20">
+                    <CardContent className="p-2 text-center">
+                      <div className="text-xl mb-1 group-hover:scale-110 transition-transform duration-300">
+                        ▲
+                      </div>
+                      <div className="text-xs font-semibold text-white group-hover:text-blue-400 transition-colors">
+                        Vercel
+                      </div>
+                      <div className="text-xs text-gray-300 mt-1">
+                        Deployment
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-red-500/20 to-pink-500/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+                  <Card className="relative bg-white/10 backdrop-blur-sm border-white/20 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 group-hover:bg-white/20">
+                    <CardContent className="p-2 text-center">
+                      <div className="text-xl mb-1 group-hover:scale-110 transition-transform duration-300">
+                        📄
+                      </div>
+                      <div className="text-xs font-semibold text-white group-hover:text-blue-400 transition-colors">
+                        Browserless.io
+                      </div>
+                      <div className="text-xs text-gray-300 mt-1">
+                        PDF Generation
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
               </div>
             </div>
 
-            <div>
-              <h3 className="text-base font-semibold text-blue-600 mb-2">
+            <div className="mt-4">
+              <h3 className="text-base font-semibold text-blue-400 mb-2">
                 Development Practices
               </h3>
               <div className="grid md:grid-cols-2 gap-3">
-                <Card>
+                <Card className="bg-white/10 backdrop-blur-sm border-white/20">
                   <CardContent className="p-3">
-                    <h4 className="font-semibold text-orange-500 mb-1 text-sm">
+                    <h4 className="font-semibold text-orange-400 mb-1 text-sm">
                       Type Safety
                     </h4>
-                    <p className="text-xs">
+                    <p className="text-xs text-gray-300">
                       TypeScript with AI for strict typing, error prevention,
                       and refactoring
                     </p>
                   </CardContent>
                 </Card>
-                <Card>
+                <Card className="bg-white/10 backdrop-blur-sm border-white/20">
                   <CardContent className="p-3">
-                    <h4 className="font-semibold text-orange-500 mb-1 text-sm">
+                    <h4 className="font-semibold text-orange-400 mb-1 text-sm">
                       Code Quality
                     </h4>
-                    <p className="text-xs">
+                    <p className="text-xs text-gray-300">
                       ESLint with AI adherence to linting rules and best
                       practices
                     </p>
@@ -392,8 +772,8 @@ export default function SlidesPage() {
     },
     {
       id: 6,
-      title: "The AI Development Journey with Cursor IDE",
-      ctaText: "Learn About AI Development Process",
+      title: "🛤️ The AI Development Journey: From Zero to Hero in Record Time",
+      ctaText: "Show Me the AI Development Process",
       content: (
         <div className="space-y-4 h-full overflow-y-auto">
           <div className="space-y-3">
@@ -401,16 +781,22 @@ export default function SlidesPage() {
               <h3 className="text-base font-semibold text-blue-600 mb-2">
                 1. Initial Scaffolding & Setup
               </h3>
-              <Card>
+              <Card className="bg-white/10 backdrop-blur-sm border-white/20">
                 <CardContent className="p-3">
-                  <ul className="space-y-1 text-xs">
+                  <ul className="space-y-1 text-xs text-gray-300">
                     <li>
-                      • <strong>Project Initialization:</strong> Next.js
-                      structure, package.json, configurations
+                      •{" "}
+                      <strong className="text-blue-400">
+                        Project Initialization:
+                      </strong>{" "}
+                      Next.js structure, package.json, configurations
                     </li>
                     <li>
-                      • <strong>Environment Setup:</strong> .env.local creation
-                      and database connections
+                      •{" "}
+                      <strong className="text-blue-400">
+                        Environment Setup:
+                      </strong>{" "}
+                      .env.local creation and database connections
                     </li>
                   </ul>
                 </CardContent>
@@ -421,20 +807,29 @@ export default function SlidesPage() {
               <h3 className="text-base font-semibold text-blue-600 mb-2">
                 2. Iterative Feature Development
               </h3>
-              <Card>
+              <Card className="bg-white/10 backdrop-blur-sm border-white/20">
                 <CardContent className="p-3">
-                  <ul className="space-y-1 text-xs">
+                  <ul className="space-y-1 text-xs text-gray-300">
                     <li>
-                      • <strong>Component Generation:</strong> Rapid UI
-                      component creation (tables, forms, cards)
+                      •{" "}
+                      <strong className="text-blue-400">
+                        Component Generation:
+                      </strong>{" "}
+                      Rapid UI component creation (tables, forms, cards)
                     </li>
                     <li>
-                      • <strong>API Route Creation:</strong> CRUD operations,
-                      filtering, and reporting endpoints
+                      •{" "}
+                      <strong className="text-blue-400">
+                        API Route Creation:
+                      </strong>{" "}
+                      CRUD operations, filtering, and reporting endpoints
                     </li>
                     <li>
-                      • <strong>Database Interaction:</strong> Drizzle ORM
-                      queries, schema updates, migrations
+                      •{" "}
+                      <strong className="text-blue-400">
+                        Database Interaction:
+                      </strong>{" "}
+                      Drizzle ORM queries, schema updates, migrations
                     </li>
                   </ul>
                 </CardContent>
@@ -445,16 +840,22 @@ export default function SlidesPage() {
               <h3 className="text-base font-semibold text-blue-600 mb-2">
                 3. Debugging & Error Resolution
               </h3>
-              <Card>
+              <Card className="bg-white/10 backdrop-blur-sm border-white/20">
                 <CardContent className="p-3">
-                  <ul className="space-y-1 text-xs">
+                  <ul className="space-y-1 text-xs text-gray-300">
                     <li>
-                      • <strong>Contextual Analysis:</strong> Real-time error
-                      detection and suggestions
+                      •{" "}
+                      <strong className="text-blue-400">
+                        Contextual Analysis:
+                      </strong>{" "}
+                      Real-time error detection and suggestions
                     </li>
                     <li>
-                      • <strong>Complex Bug Fixes:</strong> React hooks,
-                      infinite loops, type inconsistencies
+                      •{" "}
+                      <strong className="text-blue-400">
+                        Complex Bug Fixes:
+                      </strong>{" "}
+                      React hooks, infinite loops, type inconsistencies
                     </li>
                   </ul>
                 </CardContent>
@@ -466,8 +867,9 @@ export default function SlidesPage() {
     },
     {
       id: 7,
-      title: "The AI Development Journey (Continued)",
-      ctaText: "Explore AI Learning Strategies",
+      title:
+        "🧠 The AI Learning Revolution: How AI Becomes Your Best Developer",
+      ctaText: "Teach Me AI Learning Strategies",
       content: (
         <div className="space-y-4 h-full overflow-y-auto">
           <div className="space-y-3">
@@ -475,20 +877,27 @@ export default function SlidesPage() {
               <h3 className="text-base font-semibold text-blue-600 mb-2">
                 4. Refactoring & Code Quality
               </h3>
-              <Card>
+              <Card className="bg-white/10 backdrop-blur-sm border-white/20">
                 <CardContent className="p-3">
-                  <ul className="space-y-1 text-xs">
+                  <ul className="space-y-1 text-xs text-gray-300">
                     <li>
-                      • <strong>Type Enforcement:</strong> Strict typing and
-                      robust type guards across codebase
+                      •{" "}
+                      <strong className="text-blue-400">
+                        Type Enforcement:
+                      </strong>{" "}
+                      Strict typing and robust type guards across codebase
                     </li>
                     <li>
-                      • <strong>Linter Compliance:</strong> ESLint adherence for
-                      cleaner, maintainable code
+                      •{" "}
+                      <strong className="text-blue-400">
+                        Linter Compliance:
+                      </strong>{" "}
+                      ESLint adherence for cleaner, maintainable code
                     </li>
                     <li>
-                      • <strong>Documentation:</strong> Comprehensive README and
-                      CHANGELOG generation
+                      •{" "}
+                      <strong className="text-blue-400">Documentation:</strong>{" "}
+                      Comprehensive README and CHANGELOG generation
                     </li>
                   </ul>
                 </CardContent>
@@ -496,23 +905,31 @@ export default function SlidesPage() {
             </div>
 
             <div>
-              <h3 className="text-base font-semibold text-blue-600 mb-2">
+              <h3 className="text-base font-bold text-blue-400 mb-3 flex items-center">
+                <span className="w-2 h-2 bg-blue-400 rounded-full mr-2 animate-pulse"></span>
                 5. Learning & Adaptation
               </h3>
-              <Card>
-                <CardContent className="p-3">
-                  <ul className="space-y-1 text-xs">
+              <Card className="bg-white/10 backdrop-blur-sm border-white/20">
+                <CardContent className="p-4">
+                  <ul className="space-y-2 text-sm text-gray-300">
                     <li>
-                      • <strong>New Technologies:</strong> AI as pair programmer
-                      for Drizzle ORM, Supabase, QuaggaJS
+                      •{" "}
+                      <strong className="text-blue-400">
+                        New Technologies:
+                      </strong>{" "}
+                      AI as pair programmer for Drizzle ORM, Supabase, QuaggaJS
                     </li>
                     <li>
-                      • <strong>Problem Solving:</strong> Multiple approaches
-                      for informed architectural decisions
+                      •{" "}
+                      <strong className="text-blue-400">
+                        Problem Solving:
+                      </strong>{" "}
+                      Multiple approaches for informed architectural decisions
                     </li>
                     <li>
-                      • <strong>Best Practices:</strong> Continuous guidance on
-                      industry standards and patterns
+                      •{" "}
+                      <strong className="text-blue-400">Best Practices:</strong>{" "}
+                      Continuous guidance on industry standards and patterns
                     </li>
                   </ul>
                 </CardContent>
@@ -520,19 +937,25 @@ export default function SlidesPage() {
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-blue-600 to-orange-500 text-white p-4 rounded-lg text-center">
-            <p className="font-semibold text-sm">
-              Key Insight: AI acted as an intelligent assistant, enabling rapid
-              learning and implementation of complex integrations
-            </p>
+          <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-orange-500 text-white p-6 rounded-2xl text-center shadow-2xl relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-50"></div>
+            <div className="relative z-10">
+              <p className="font-bold text-lg">
+                Key Insight: AI acted as an intelligent assistant, enabling
+                rapid learning and implementation of complex integrations
+              </p>
+            </div>
+            <div className="absolute top-2 right-2 w-3 h-3 bg-white/20 rounded-full animate-ping"></div>
+            <div className="absolute bottom-2 left-2 w-2 h-2 bg-white/20 rounded-full animate-ping delay-1000"></div>
           </div>
         </div>
       ),
     },
     {
       id: 8,
-      title: "Benefits of AI-Driven Development",
-      ctaText: "Discover AI Development Benefits",
+      title:
+        "💎 The Benefits: Why AI-Driven Development is Your Competitive Advantage",
+      ctaText: "Show Me the AI Development Benefits",
       content: (
         <div className="space-y-4 h-full overflow-y-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -569,15 +992,18 @@ export default function SlidesPage() {
             ].map((benefit, index) => (
               <Card
                 key={index}
-                className="bg-gradient-to-br from-blue-50 to-orange-50 border-blue-200"
+                className="bg-gradient-to-br from-blue-500/10 to-orange-500/10 backdrop-blur-sm border-blue-400/30 hover:border-blue-400/50 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-blue-500/25"
               >
-                <CardContent className="p-3">
-                  <h4 className="font-semibold text-blue-600 mb-2 text-sm">
+                <CardContent className="p-4">
+                  <h4 className="font-bold text-blue-400 mb-3 text-sm flex items-center">
+                    <span className="w-2 h-2 bg-blue-400 rounded-full mr-2 animate-pulse"></span>
                     {benefit.title}
                   </h4>
-                  <ul className="space-y-1 text-xs text-gray-700">
+                  <ul className="space-y-2 text-sm text-gray-300">
                     {benefit.items.map((item, itemIndex) => (
-                      <li key={itemIndex}>• {item}</li>
+                      <li key={itemIndex} className="flex items-center">
+                        • {item}
+                      </li>
                     ))}
                   </ul>
                 </CardContent>
@@ -589,10 +1015,12 @@ export default function SlidesPage() {
     },
     {
       id: 9,
-      title: "Challenges & Key Learnings",
+      title:
+        "⚔️ The Challenges: Lessons Learned from the AI Development Battlefield",
+      ctaText: "Help Me Overcome Development Challenges",
       content: (
-        <div className="space-y-4 h-full overflow-y-auto">
-          <div className="space-y-3">
+        <div className="space-y-3 h-full overflow-y-auto">
+          <div className="grid grid-cols-2 gap-3">
             {[
               {
                 title: "1. Prompt Engineering",
@@ -625,15 +1053,18 @@ export default function SlidesPage() {
             ].map((challenge, index) => (
               <Card
                 key={index}
-                className="bg-gradient-to-br from-orange-50 to-blue-50 border-orange-200"
+                className="bg-gradient-to-br from-orange-500/10 to-blue-500/10 backdrop-blur-sm border-orange-400/30 hover:border-orange-400/50 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-orange-500/25"
               >
-                <CardContent className="p-3">
-                  <h4 className="font-semibold text-orange-500 mb-2 text-sm">
+                <CardContent className="p-4">
+                  <h4 className="font-bold text-orange-400 mb-3 text-sm flex items-center">
+                    <span className="w-2 h-2 bg-orange-400 rounded-full mr-2 animate-pulse"></span>
                     {challenge.title}
                   </h4>
-                  <ul className="space-y-1 text-xs text-gray-700">
+                  <ul className="space-y-2 text-sm text-gray-300">
                     {challenge.items.map((item, itemIndex) => (
-                      <li key={itemIndex}>• {item}</li>
+                      <li key={itemIndex} className="flex items-center">
+                        • {item}
+                      </li>
                     ))}
                   </ul>
                 </CardContent>
@@ -645,15 +1076,16 @@ export default function SlidesPage() {
     },
     {
       id: 10,
-      title: "Future Enhancements & AI's Continued Role",
-      ctaText: "Plan Your AI Development Roadmap",
+      title: "🔮 The Future: AI's Continued Role in the Development Revolution",
+      ctaText: "Plan My AI Development Future",
       content: (
-        <div className="space-y-4 h-full overflow-y-auto">
+        <div className="space-y-3 h-full overflow-y-auto">
           <div>
-            <h3 className="text-base font-semibold text-blue-600 mb-3">
+            <h3 className="text-base font-bold text-blue-400 mb-3 flex items-center">
+              <div className="w-1 h-6 bg-gradient-to-b from-blue-400 to-purple-400 rounded-full mr-3"></div>
               Next Steps for the Asset Management System
             </h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
               {[
                 {
                   title: "Full API Integration",
@@ -672,12 +1104,17 @@ export default function SlidesPage() {
                   desc: "Unit, component, and E2E testing",
                 },
               ].map((step, index) => (
-                <Card key={index} className="hover:shadow-lg transition-shadow">
+                <Card
+                  key={index}
+                  className="hover:shadow-xl transition-all duration-300 hover:scale-105 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border-white/20 hover:border-white/40 shadow-lg hover:shadow-blue-500/25 group"
+                >
                   <CardContent className="p-3 text-center">
-                    <div className="font-semibold text-blue-600 mb-1 text-sm">
+                    <div className="font-bold text-blue-400 mb-1 text-sm group-hover:text-blue-300 transition-colors">
                       {step.title}
                     </div>
-                    <div className="text-xs text-gray-600">{step.desc}</div>
+                    <div className="text-xs text-gray-300 group-hover:text-gray-200 transition-colors">
+                      {step.desc}
+                    </div>
                   </CardContent>
                 </Card>
               ))}
@@ -685,10 +1122,11 @@ export default function SlidesPage() {
           </div>
 
           <div>
-            <h3 className="text-base font-semibold text-blue-600 mb-3">
+            <h3 className="text-base font-bold text-blue-400 mb-3 flex items-center">
+              <div className="w-1 h-6 bg-gradient-to-b from-blue-400 to-purple-400 rounded-full mr-3"></div>
               AI&apos;s Future Contribution
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
               {[
                 {
                   title: "Automated Testing",
@@ -709,13 +1147,14 @@ export default function SlidesPage() {
               ].map((contribution, index) => (
                 <Card
                   key={index}
-                  className="bg-gradient-to-br from-blue-50 to-orange-50 border-blue-200"
+                  className="bg-gradient-to-br from-blue-500/10 to-orange-500/10 backdrop-blur-sm border-blue-400/30 hover:border-blue-400/50 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-blue-500/25"
                 >
                   <CardContent className="p-3">
-                    <h4 className="font-semibold text-blue-600 mb-1 text-sm">
+                    <h4 className="font-bold text-blue-400 mb-2 text-sm flex items-center">
+                      <span className="w-2 h-2 bg-blue-400 rounded-full mr-2 animate-pulse"></span>
                       {contribution.title}
                     </h4>
-                    <p className="text-xs text-gray-700">{contribution.desc}</p>
+                    <p className="text-sm text-gray-300">{contribution.desc}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -726,21 +1165,26 @@ export default function SlidesPage() {
     },
     {
       id: 11,
-      title: "The Future of Development",
-      ctaText: "Shape the Future of Development",
+      title: "🌟 The Paradigm Shift: The Future of Development is Already Here",
+      ctaText: "Shape the Future of My Development",
       content: (
-        <div className="space-y-4 h-full overflow-y-auto">
-          <div className="bg-gradient-to-r from-blue-600 to-orange-500 text-white p-4 rounded-lg text-center">
-            <h3 className="text-lg font-semibold mb-2">
-              The Paradigm Shift is Here
-            </h3>
-            <p className="text-sm">
-              AI is not just a tool; it&apos;s a transformative partner in
-              software creation
-            </p>
+        <div className="space-y-2 h-full overflow-y-auto">
+          <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-orange-500 text-white p-4 rounded-2xl text-center shadow-2xl relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-50"></div>
+            <div className="relative z-10">
+              <h3 className="text-lg font-bold mb-2 animate-pulse">
+                The Paradigm Shift is Here
+              </h3>
+              <p className="text-sm font-medium">
+                AI is not just a tool; it&apos;s a transformative partner in
+                software creation
+              </p>
+            </div>
+            <div className="absolute top-2 right-2 w-4 h-4 bg-white/20 rounded-full animate-ping"></div>
+            <div className="absolute bottom-2 left-2 w-3 h-3 bg-white/20 rounded-full animate-ping delay-1000"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {[
               {
                 title: "🚀 Development Velocity",
@@ -781,17 +1225,18 @@ export default function SlidesPage() {
             ].map((section, index) => (
               <Card
                 key={index}
-                className="bg-gradient-to-br from-blue-50 to-orange-50 border-blue-200"
+                className="bg-gradient-to-br from-blue-500/10 to-orange-500/10 backdrop-blur-sm border-blue-400/30 hover:border-blue-400/50 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-blue-500/25"
               >
-                <CardContent className="p-4">
-                  <h4 className="font-bold text-blue-600 mb-3 text-base">
+                <CardContent className="p-3">
+                  <h4 className="font-bold text-blue-400 mb-2 text-sm flex items-center">
+                    <span className="w-2 h-2 bg-blue-400 rounded-full mr-2 animate-pulse"></span>
                     {section.title}
                   </h4>
-                  <ul className="space-y-2 text-sm">
+                  <ul className="space-y-1 text-xs">
                     {section.points.map((point, pointIndex) => (
                       <li key={pointIndex} className="flex items-start">
-                        <span className="text-orange-500 mr-2">•</span>
-                        <span className="text-gray-700">{point}</span>
+                        <span className="text-orange-400 mr-2">•</span>
+                        <span className="text-gray-300">{point}</span>
                       </li>
                     ))}
                   </ul>
@@ -800,39 +1245,52 @@ export default function SlidesPage() {
             ))}
           </div>
 
-          <div className="bg-gradient-to-r from-orange-500 to-blue-600 text-white p-4 rounded-lg text-center">
-            <h3 className="text-lg font-semibold mb-2">
-              The Era of AI-Driven Software Creation
-            </h3>
-            <p className="text-sm font-medium">
-              Organizations that embrace AI development will lead the next
-              decade of innovation
-            </p>
+          <div className="bg-gradient-to-r from-orange-500 via-purple-500 to-blue-600 text-white p-4 rounded-2xl text-center shadow-2xl relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-50"></div>
+            <div className="relative z-10">
+              <h3 className="text-lg font-bold mb-2 animate-pulse">
+                The Era of AI-Driven Software Creation
+              </h3>
+              <p className="text-sm font-medium">
+                Organizations that embrace AI development will lead the next
+                decade of innovation
+              </p>
+            </div>
+            <div className="absolute top-2 right-2 w-4 h-4 bg-white/20 rounded-full animate-ping"></div>
+            <div className="absolute bottom-2 left-2 w-3 h-3 bg-white/20 rounded-full animate-ping delay-1000"></div>
           </div>
         </div>
       ),
     },
     {
       id: 12,
-      title: "Conclusion: A New Development Paradigm",
-      ctaText: "Contact Us",
+      title: "🎯 The Conclusion: Your New Development Paradigm Awaits",
+      ctaText: "Start My AI Development Transformation",
       content: (
-        <div className="space-y-4 h-full overflow-y-auto">
-          <div className="bg-gradient-to-r from-blue-600 to-orange-500 text-white p-4 rounded-lg text-center">
-            <h3 className="text-lg font-semibold mb-2">The Journey</h3>
-            <p className="mb-2 text-sm">
-              From concept to robust, feature-rich Asset Management System
-            </p>
-            <p className="text-sm">
-              A testament to the power of AI in modern software development
-            </p>
+        <div className="space-y-4 h-full overflow-y-auto pt-4">
+          <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-orange-500 text-white p-6 rounded-2xl text-center shadow-2xl relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-50"></div>
+            <div className="relative z-10">
+              <h3 className="text-2xl font-bold mb-3 animate-pulse">
+                The Transformation is Complete
+              </h3>
+              <p className="mb-2 text-lg font-medium">
+                From concept to robust, feature-rich Asset Management System
+              </p>
+              <p className="text-base font-medium">
+                A testament to the power of AI in modern software development
+              </p>
+            </div>
+            <div className="absolute top-2 right-2 w-4 h-4 bg-white/20 rounded-full animate-ping"></div>
+            <div className="absolute bottom-2 left-2 w-3 h-3 bg-white/20 rounded-full animate-ping delay-1000"></div>
           </div>
 
           <div>
-            <h3 className="text-base font-semibold text-blue-600 mb-3">
+            <h3 className="text-sm font-bold text-blue-400 mb-3 flex items-center">
+              <div className="w-1 h-5 bg-gradient-to-b from-blue-400 to-purple-400 rounded-full mr-3"></div>
               Key Takeaways for Your Organization
             </h3>
-            <div className="grid md:grid-cols-3 gap-3">
+            <div className="grid md:grid-cols-3 gap-2">
               {[
                 {
                   role: "For CTOs",
@@ -859,14 +1317,20 @@ export default function SlidesPage() {
                   ],
                 },
               ].map((takeaway, index) => (
-                <Card key={index}>
+                <Card
+                  key={index}
+                  className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border-white/20 hover:border-white/40 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-blue-500/25 group"
+                >
                   <CardContent className="p-3">
-                    <h4 className="font-semibold text-blue-600 mb-2 text-sm">
+                    <h4 className="font-bold text-blue-400 mb-2 text-xs flex items-center group-hover:text-blue-300 transition-colors">
+                      <span className="w-2 h-2 bg-blue-400 rounded-full mr-2 animate-pulse"></span>
                       {takeaway.role}
                     </h4>
-                    <ul className="space-y-1 text-xs">
+                    <ul className="space-y-1 text-xs text-gray-300 group-hover:text-gray-200 transition-colors">
                       {takeaway.items.map((item, itemIndex) => (
-                        <li key={itemIndex}>• {item}</li>
+                        <li key={itemIndex} className="flex items-center">
+                          • {item}
+                        </li>
                       ))}
                     </ul>
                   </CardContent>
@@ -875,10 +1339,19 @@ export default function SlidesPage() {
             </div>
           </div>
 
-          <div className="text-center">
-            <h2 className="text-2xl font-bold text-gray-800">
-              Questions & Discussion
-            </h2>
+          <div className="bg-gradient-to-r from-orange-500 via-purple-500 to-blue-600 text-white p-4 rounded-2xl text-center shadow-2xl relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-50"></div>
+            <div className="relative z-10">
+              <h3 className="text-lg font-bold mb-2 animate-pulse">
+                Ready to Transform Your Development Process?
+              </h3>
+              <p className="text-sm font-medium">
+                Let's discuss how AI-driven development can revolutionize your
+                organization's software capabilities
+              </p>
+            </div>
+            <div className="absolute top-2 right-2 w-4 h-4 bg-white/20 rounded-full animate-ping"></div>
+            <div className="absolute bottom-2 left-2 w-3 h-3 bg-white/20 rounded-full animate-ping delay-1000"></div>
           </div>
         </div>
       ),
@@ -929,41 +1402,87 @@ export default function SlidesPage() {
     return () => clearInterval(timer);
   }, [isAutoPlaying, nextSlide]);
 
-  // Keyboard navigation
+  // Enhanced keyboard navigation
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
-      if (event.key === "ArrowRight" || event.key === " ") {
-        event.preventDefault();
-        nextSlide();
-      } else if (event.key === "ArrowLeft") {
-        event.preventDefault();
-        prevSlide();
+      switch (event.key) {
+        case "ArrowLeft":
+          event.preventDefault();
+          prevSlide();
+          break;
+        case "ArrowRight":
+        case " ":
+          event.preventDefault();
+          nextSlide();
+          break;
+        case "a":
+        case "A":
+          event.preventDefault();
+          toggleAutoPlay();
+          break;
+        case "Escape":
+          setIsAutoPlaying(false);
+          break;
       }
     };
 
     window.addEventListener("keydown", handleKeyPress);
     return () => window.removeEventListener("keydown", handleKeyPress);
-  }, [nextSlide, prevSlide]);
+  }, [nextSlide, prevSlide, toggleAutoPlay]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 relative overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-orange-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-500"></div>
+
+        {/* Floating Tech Particles */}
+        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-blue-400 rounded-full animate-bounce delay-300"></div>
+        <div className="absolute top-3/4 right-1/3 w-1 h-1 bg-orange-400 rounded-full animate-bounce delay-700"></div>
+        <div className="absolute top-1/2 right-1/4 w-1.5 h-1.5 bg-purple-400 rounded-full animate-bounce delay-500"></div>
+        <div className="absolute bottom-1/4 left-1/3 w-1 h-1 bg-cyan-400 rounded-full animate-bounce delay-1000"></div>
+
+        {/* Animated Grid Lines */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent animate-pulse"></div>
+          <div className="absolute top-1/3 left-0 w-full h-px bg-gradient-to-r from-transparent via-orange-400 to-transparent animate-pulse delay-1000"></div>
+          <div className="absolute top-2/3 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-400 to-transparent animate-pulse delay-500"></div>
+          <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-pulse delay-1500"></div>
+        </div>
+      </div>
+
       {/* Header */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center space-x-4">
-            <h1 className="text-lg font-semibold text-gray-800">
-              AI-Driven Development Showcase
-            </h1>
-            <Badge variant="outline" className="text-xs">
+      <div className="fixed top-0 left-0 right-0 z-50 bg-black/30 backdrop-blur-2xl border-b border-white/20 shadow-2xl">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center space-x-6">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-gradient-to-r from-blue-500 via-purple-500 to-orange-500 rounded-xl flex items-center justify-center shadow-lg animate-pulse">
+                <span className="text-white font-bold text-sm">AI</span>
+              </div>
+              <div>
+                <h1 className="text-xl font-bold text-white bg-gradient-to-r from-blue-400 to-orange-400 bg-clip-text text-transparent">
+                  The AI Development Revolution
+                </h1>
+                <p className="text-xs text-gray-300">
+                  Where One Developer Becomes an Entire Engineering Team
+                </p>
+              </div>
+            </div>
+            <Badge
+              variant="outline"
+              className="text-xs bg-gradient-to-r from-blue-500/20 to-orange-500/20 text-white border-white/30 backdrop-blur-sm"
+            >
               {currentSlide + 1} / {slides.length}
             </Badge>
           </div>
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-3">
             <Button
               variant="outline"
               size="sm"
               onClick={toggleAutoPlay}
-              className="flex items-center space-x-1"
+              className="flex items-center space-x-2 bg-gradient-to-r from-blue-500/20 to-orange-500/20 text-white border-white/30 hover:from-blue-500/30 hover:to-orange-500/30 backdrop-blur-sm transition-all duration-300"
             >
               {isAutoPlaying ? (
                 <Pause className="h-4 w-4" />
@@ -976,12 +1495,12 @@ export default function SlidesPage() {
         </div>
         <Progress
           value={isAutoPlaying ? progress : 0}
-          className="h-1 bg-gray-200"
+          className="h-1 bg-white/10"
           style={
             {
               "--progress-color": isAutoPlaying
-                ? `hsl(${220 + progress * 0.2}, 80%, ${85 - progress * 0.5}%)`
-                : "#f8fafc", // Light gray background color
+                ? `linear-gradient(90deg, #3b82f6, #f97316)`
+                : "transparent",
             } as React.CSSProperties
           }
         />
@@ -990,69 +1509,80 @@ export default function SlidesPage() {
       {/* Main Content */}
       <div
         ref={containerRef}
-        className="pt-20 pb-32 px-4 h-screen"
+        className="pt-24 pb-32 px-6 h-screen"
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
       >
-        <div className="max-w-6xl mx-auto h-full">
-          <div className="bg-white rounded-xl shadow-xl overflow-hidden h-full flex flex-col">
-            <div className="p-6 md:p-8 flex-1 flex flex-col">
-              <div className="text-center mb-4 flex-shrink-0">
-                <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2">
-                  {slides[currentSlide].title}
-                </h1>
-                {slides[currentSlide].subtitle && (
-                  <h2 className="text-lg md:text-xl text-gray-600">
-                    {slides[currentSlide].subtitle}
-                  </h2>
-                )}
-              </div>
+        <div className="max-w-7xl mx-auto h-full">
+          <div className="bg-white/5 backdrop-blur-2xl rounded-3xl shadow-2xl border border-white/20 overflow-hidden h-full flex flex-col relative">
+            {/* Glowing Border Effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-orange-500/20 rounded-3xl blur-xl animate-pulse"></div>
+            <div className="relative bg-black/20 backdrop-blur-2xl rounded-3xl border border-white/20 h-full flex flex-col">
+              <div className="p-8 md:p-10 flex-1 flex flex-col">
+                <div className="text-center mb-6 flex-shrink-0">
+                  <h1 className="text-3xl md:text-4xl font-bold text-white mb-3 bg-gradient-to-r from-blue-400 via-purple-400 to-orange-400 bg-clip-text text-transparent animate-pulse">
+                    {slides[currentSlide].title}
+                  </h1>
+                  {slides[currentSlide].subtitle && (
+                    <h2 className="text-xl md:text-2xl text-gray-300 font-medium italic">
+                      {slides[currentSlide].subtitle}
+                    </h2>
+                  )}
+                  <div className="mt-4 flex justify-center">
+                    <div className="w-16 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-orange-500 rounded-full animate-pulse"></div>
+                  </div>
+                </div>
 
-              <div className="flex-1 overflow-hidden">
-                {slides[currentSlide].content}
-              </div>
-            </div>
-
-            {/* Footer with CTA Button */}
-            {slides[currentSlide].ctaText && (
-              <div className="border-t border-gray-200 bg-gray-50 px-6 md:px-8 py-4 flex-shrink-0">
-                <div className="text-center">
-                  <Button
-                    onClick={handleEmailCTA}
-                    className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-2 text-base font-medium"
-                  >
-                    <Mail className="h-4 w-4 mr-2" />
-                    {slides[currentSlide].ctaText}
-                  </Button>
+                <div className="flex-1 overflow-hidden">
+                  {slides[currentSlide].content}
                 </div>
               </div>
-            )}
+
+              {/* Footer with CTA Button */}
+              {slides[currentSlide].ctaText && (
+                <div className="border-t border-white/20 bg-gradient-to-r from-black/30 to-black/20 backdrop-blur-xl px-8 md:px-10 py-4 flex-shrink-0 flex items-center justify-center">
+                  <Button
+                    onClick={handleEmailCTA}
+                    className="bg-gradient-to-r from-orange-400 to-orange-500 hover:from-orange-500 hover:to-orange-600 text-white px-12 py-4 text-lg font-bold rounded-2xl shadow-2xl hover:shadow-orange-500/50 transition-all duration-500 transform hover:scale-110 hover:-translate-y-1 relative overflow-hidden group border-2 border-orange-300/50"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <Mail className="h-5 w-5 mr-3 relative z-10" />
+                    <span className="relative z-10">
+                      {slides[currentSlide].ctaText}
+                    </span>
+                    <div className="absolute -top-1 -right-1 w-3 h-3 bg-white rounded-full animate-ping"></div>
+                  </Button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
 
       {/* Navigation */}
-      <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50">
-        <div className="flex items-center space-x-4 bg-white/90 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg border border-gray-200">
+      <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
+        <div className="flex items-center space-x-6 bg-gradient-to-r from-black/40 to-black/30 backdrop-blur-2xl rounded-full px-8 py-4 shadow-2xl border border-white/30">
           <Button
             variant="outline"
             size="sm"
             onClick={prevSlide}
             disabled={currentSlide === 0}
-            className="flex items-center space-x-1"
+            className="flex items-center space-x-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-white border-white/30 hover:from-blue-500/30 hover:to-purple-500/30 disabled:opacity-50 backdrop-blur-sm transition-all duration-300"
           >
             <ChevronLeft className="h-4 w-4" />
             <span className="hidden sm:inline">Previous</span>
           </Button>
 
-          <div className="flex space-x-1">
+          <div className="flex space-x-2">
             {slides.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index)}
-                className={`w-2 h-2 rounded-full transition-colors ${
-                  index === currentSlide ? "bg-blue-600" : "bg-gray-300"
+                className={`w-3 h-3 rounded-full transition-all duration-500 ${
+                  index === currentSlide
+                    ? "bg-gradient-to-r from-blue-500 via-purple-500 to-orange-500 shadow-lg shadow-blue-500/50 animate-pulse"
+                    : "bg-white/30 hover:bg-white/50 hover:scale-125"
                 }`}
               />
             ))}
@@ -1063,7 +1593,7 @@ export default function SlidesPage() {
             size="sm"
             onClick={nextSlide}
             disabled={currentSlide === slides.length - 1}
-            className="flex items-center space-x-1"
+            className="flex items-center space-x-2 bg-gradient-to-r from-orange-500/20 to-purple-500/20 text-white border-white/30 hover:from-orange-500/30 hover:to-purple-500/30 disabled:opacity-50 backdrop-blur-sm transition-all duration-300"
           >
             <span className="hidden sm:inline">Next</span>
             <ChevronRight className="h-4 w-4" />
@@ -1072,9 +1602,30 @@ export default function SlidesPage() {
       </div>
 
       {/* Mobile swipe indicator */}
-      <div className="fixed bottom-20 left-1/2 transform -translate-x-1/2 z-40 md:hidden">
-        <div className="bg-black/50 text-white px-3 py-1 rounded-full text-xs">
-          Swipe to navigate
+      <div className="fixed bottom-24 left-1/2 transform -translate-x-1/2 z-40 md:hidden">
+        <div className="bg-gradient-to-r from-black/60 to-black/40 backdrop-blur-xl text-white px-6 py-3 rounded-full text-sm border border-white/30 shadow-2xl animate-pulse">
+          <div className="flex items-center space-x-2">
+            <div className="w-2 h-2 bg-white rounded-full animate-bounce"></div>
+            <span>Swipe to navigate</span>
+            <div className="w-2 h-2 bg-white rounded-full animate-bounce delay-300"></div>
+          </div>
+        </div>
+      </div>
+
+      {/* Loading Animation */}
+      {isAutoPlaying && (
+        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50">
+          <div className="w-16 h-16 border-4 border-blue-500/30 border-t-blue-500 rounded-full animate-spin"></div>
+        </div>
+      )}
+
+      {/* Keyboard Shortcuts Help */}
+      <div className="fixed top-4 right-4 z-40 opacity-0 hover:opacity-100 transition-opacity duration-300 group">
+        <div className="bg-black/60 backdrop-blur-xl text-white px-4 py-2 rounded-lg text-xs border border-white/20">
+          <div className="font-semibold mb-1">Keyboard Shortcuts</div>
+          <div>← → Navigate</div>
+          <div>Space/A Auto-play</div>
+          <div>Esc Stop</div>
         </div>
       </div>
     </div>
